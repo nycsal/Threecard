@@ -11,7 +11,7 @@
       height: 100%;
       width: 100vw;
       overflow: hidden;
-      background: repeating-linear-gradient(135deg, #1b6d2a 0 20px, #2b8a3e 20px 40px);
+      background: #168f3e;
     }
     body {
       min-height: 100vh;
@@ -23,7 +23,7 @@
     .container {
       width: 375px;
       height: 700px;
-      background: rgba(255,255,255,0.10);
+      background: linear-gradient(135deg, #1b6d2a 0 40%, #168f3e 100%);
       border-radius: 18px;
       box-shadow: 0 8px 40px #000a;
       display: flex;
@@ -32,33 +32,60 @@
       position: relative;
       overflow: hidden;
       border: 3px solid #ffe066;
+      user-select: none;
     }
     h1 {
-      margin: 18px 0 6px 0;
+      margin: 18px 0 4px 0;
       font-size: 2em;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-align: center;
       color: #ffe066;
-      text-shadow: 0 2px 8px #0007;
+      text-shadow: 0 2px 10px #0007;
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
+    .table-lines {
+      position: absolute;
+      width: 100%;
+      height: 220px;
+      left: 0; top: 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .table-lines svg {
+      width: 100%; height: 100%;
+      display: block;
+    }
+    .table-label {
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      color: #ffe066;
+      font-family: Arial, sans-serif;
+      font-size: 1.1em;
+      font-weight: bold;
+      text-shadow: 0 2px 8px #0007;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .label-player { top: 220px; }
+    .label-dealer { top: 80px; }
     .balance-area {
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 18px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      z-index: 2;
     }
     .balance {
       font-size: 1.3em;
       font-weight: bold;
-      letter-spacing: 1px;
       background: #ffe066;
       color: #333;
       border-radius: 8px;
       padding: 4px 14px;
       box-shadow: 0 2px 8px #ffe06666;
-      transition: color 0.4s, background 0.4s, transform 0.4s;
+      transition: background 0.4s, color 0.4s, transform 0.4s;
       position: relative;
       z-index: 2;
     }
@@ -92,12 +119,13 @@
       flex-direction: column;
       align-items: center;
       margin: 0 0 10px 0;
+      z-index: 2;
     }
     .bet-area {
       width: 100%;
       display: flex;
       justify-content: space-around;
-      margin: 10px 0 6px 0;
+      margin: 10px 0 4px 0;
       z-index: 2;
     }
     .bet-box {
@@ -151,35 +179,12 @@
     .chip.chip-100k { background: #44b044; }
     .chip.chip-200k { background: #8e44ad; }
     .chip.chip-500k { background: #e67e22; }
-    .table-layout {
-      width: 98%;
-      margin: 0 auto 0 auto;
-      height: 120px;
-      position: relative;
-      background: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .table-lines {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0; top: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .table-lines svg {
-      width: 100%; height: 100%;
-      display: block;
-    }
     .cards-area {
       width: 100%;
       position: absolute;
-      top: 124px;
+      top: 90px;
       left: 0;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
     }
     .cards-row {
@@ -192,14 +197,8 @@
       left: 0;
       pointer-events: none;
     }
-    .cards-row.player {
-      top: 60px;
-      z-index: 2;
-    }
-    .cards-row.dealer {
-      top: 10px;
-      z-index: 2;
-    }
+    .cards-row.dealer { top: 10px; }
+    .cards-row.player { top: 100px; }
     .card {
       width: 62px;
       height: 90px;
@@ -221,9 +220,6 @@
       animation-delay: var(--delay, 0s);
       background-image: repeating-linear-gradient(135deg, #ffe06622 0 8px, #fff9c0 8px 16px);
       border: 2px solid #ffe066;
-    }
-    .card .flip {
-      animation: flipCard 0.7s;
     }
     @keyframes dealCard {
       0% { opacity: 0; transform: translateY(30px) scale(0.7) rotate(-10deg);}
@@ -258,20 +254,31 @@
       font-weight: bold;
       box-shadow: 0 2px 8px #ffe06666;
       transition: background 0.2s, transform 0.1s;
+      animation: pulseBtn 1.6s infinite;
     }
     .action-btn:active { transform: scale(0.97);}
-    .action-btn:disabled { background: #ccc; color: #888; cursor: not-allowed;}
+    .action-btn:disabled {
+      background: #ccc;
+      color: #888;
+      cursor: not-allowed;
+      animation: none;
+    }
+    @keyframes pulseBtn {
+      0% { box-shadow: 0 0 0 0 #ffe06677; }
+      60% { box-shadow: 0 0 0 10px #ffe06622; }
+      100% { box-shadow: 0 0 0 0 #ffe06600; }
+    }
     .result-area {
       width: 100%;
       text-align: center;
-      font-size: 1.2em;
+      font-size: 1.3em;
       font-weight: bold;
       letter-spacing: 1px;
       margin: 7px 0 0 0;
       min-height: 32px;
       transition: color 0.2s;
       position: absolute;
-      top: 250px;
+      top: 260px;
       left: 0;
       z-index: 3;
       pointer-events: none;
@@ -307,7 +314,7 @@
     .win-fly {
       position: absolute;
       left: 50%;
-      top: 40%;
+      top: 45%;
       font-size: 1.5em;
       color: #ffe066;
       font-weight: bold;
@@ -346,7 +353,25 @@
 </head>
 <body>
   <div class="container">
-    <h1>Three Card Poker</h1>
+    <h1>THREE CARD POKER</h1>
+    <div class="table-lines">
+      <svg viewBox="0 0 375 220">
+        <!-- Dealer arc -->
+        <ellipse cx="187.5" cy="70" rx="110" ry="18" fill="none" stroke="#ffe066" stroke-width="3"/>
+        <!-- Player arc -->
+        <ellipse cx="187.5" cy="180" rx="110" ry="18" fill="none" stroke="#ffe066" stroke-width="3"/>
+        <!-- Bet boxes -->
+        <rect x="65" y="110" width="70" height="30" rx="12" fill="none" stroke="#ffe066" stroke-width="3"/>
+        <rect x="155" y="110" width="70" height="30" rx="12" fill="none" stroke="#ffe066" stroke-width="3"/>
+        <rect x="245" y="110" width="70" height="30" rx="12" fill="none" stroke="#ffe066" stroke-width="3"/>
+        <!-- Bet labels -->
+        <text x="100" y="130" text-anchor="middle" fill="#ffe066" font-size="13" font-family="Arial" font-weight="bold">ANTE</text>
+        <text x="190" y="130" text-anchor="middle" fill="#ffe066" font-size="13" font-family="Arial" font-weight="bold">PAIR+</text>
+        <text x="280" y="130" text-anchor="middle" fill="#ffe066" font-size="13" font-family="Arial" font-weight="bold">6 CARD</text>
+      </svg>
+      <div class="table-label label-player">PLAYER</div>
+      <div class="table-label label-dealer">DEALER</div>
+    </div>
     <div class="balance-area">
       <span class="balance" id="balance">$5,000,000</span>
       <button class="reload-btn" onclick="reloadBalance()">Reload</button>
@@ -373,23 +398,9 @@
         <div class="chip chip-500k" onclick="selectChip(500000)">$500K</div>
       </div>
     </div>
-    <div class="table-layout">
-      <div class="table-lines">
-        <svg viewBox="0 0 375 120">
-          <!-- Dealer arc -->
-          <ellipse cx="187.5" cy="30" rx="110" ry="18" fill="none" stroke="#ffe066" stroke-width="3"/>
-          <!-- Player arc -->
-          <ellipse cx="187.5" cy="90" rx="110" ry="18" fill="none" stroke="#ffe066" stroke-width="3"/>
-          <!-- Player label -->
-          <text x="187.5" y="115" text-anchor="middle" fill="#ffe066" font-size="18" font-family="Arial" font-weight="bold">PLAYER</text>
-          <!-- Dealer label -->
-          <text x="187.5" y="20" text-anchor="middle" fill="#ffe066" font-size="16" font-family="Arial" font-weight="bold">DEALER</text>
-        </svg>
-      </div>
-      <div class="cards-area">
-        <div class="cards-row dealer" id="dealerCards"></div>
-        <div class="cards-row player" id="playerCards"></div>
-      </div>
+    <div class="cards-area">
+      <div class="cards-row dealer" id="dealerCards"></div>
+      <div class="cards-row player" id="playerCards"></div>
     </div>
     <div class="result-area" id="resultArea"></div>
     <div class="table-area">
