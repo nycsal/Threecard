@@ -8,95 +8,94 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #222e50 0%, #6dd3ce 100%);
+      background: linear-gradient(135deg, #253653 0%, #41e1b5 100%);
       width: 100vw; height: 100vh;
       overflow: hidden;
     }
     body {
-      width: 100vw;
-      height: 100vh;
-      min-width: 100vw;
-      min-height: 100vh;
+      width: 100vw; height: 100vh;
+      min-width: 100vw; min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       user-select: none;
-      -webkit-user-select: none;
     }
     .container {
       width: 100vw;
+      min-width: 100vw;
       height: 100vh;
-      max-width: 420px;
-      max-height: 750px;
-      background: linear-gradient(135deg, #164e63 30%, #5eead4 100%);
+      max-width: 430px;
+      max-height: 812px;
+      background: linear-gradient(135deg, #253653 0%, #50aba7 100%);
       border-radius: 0;
-      box-shadow: 0 8px 44px #000a, 0 0 0 4px #fff;
+      box-shadow: 0 8px 44px #000a;
       display: flex;
       flex-direction: column;
       align-items: center;
       position: fixed;
       top: 0; left: 0;
       overflow: hidden;
-      border: 0;
+      border: none;
+      touch-action: none;
     }
     .branding {
-      font-size: 1.16em;
+      font-size: 1.13em;
       letter-spacing: 2px;
       font-weight: bold;
       color: #fff;
-      background: #fbbf24;
+      background: #36cfff;
       padding: 4px 18px;
-      border-radius: 13px;
+      border-radius: 11px;
       margin-top: 14px;
       margin-bottom: 6px;
-      box-shadow: 0 0 8px 2px #fbbf2450;
+      box-shadow: 0 0 8px 2px #36cfff50;
       text-align: center;
     }
     h1 {
-      margin: 4px 0 4px 0;
-      font-size: 2.12em;
+      margin: 3px 0 4px 0;
+      font-size: 2em;
       letter-spacing: 3px;
       color: #fff;
-      text-shadow: 0 2px 12px #0e3647, 0 0 3px #6dd3ce;
+      text-shadow: 0 2px 12px #222e50, 0 0 3px #36cfff;
       font-family: 'Segoe UI', Arial, sans-serif;
       text-align: center;
     }
     .balance-area {
-      width: 90%;
+      width: 91%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(90deg, #fbbf24cc, #fde68acc);
-      border-radius: 11px;
+      background: linear-gradient(90deg, #bee9e8bb, #5dade2bb);
+      border-radius: 12px;
       margin-bottom: 4px;
       padding: 8px 16px 7px 14px;
-      box-shadow: 0 2px 9px #fde68a30;
-      font-size: 1.05em;
+      box-shadow: 0 2px 9px #00a9ac20;
+      font-size: 1.06em;
       min-height: 35px;
       z-index: 2;
     }
     .balance {
-      font-size: 1.18em;
+      font-size: 1.17em;
       font-weight: bold;
-      color: #035988;
-      background: #fbbf24;
+      color: #005e5e;
+      background: #36cfff;
       padding: 2px 16px;
-      border-radius: 16px;
-      transition: background 0.3s, color 0.36s, transform 0.4s;
+      border-radius: 13px;
+      transition: background 0.32s, color 0.29s, transform 0.35s;
     }
     .balance.animate {
       color: #fff;
-      background: #10b981;
-      animation: bankPulse 0.88s;
-      transform: scale(1.14);
+      background: #50b26e;
+      animation: bankPulse 0.9s;
+      transform: scale(1.12);
     }
     @keyframes bankPulse {
-      0% { background: #fbbf24; color: #035988 }
-      60% { background: #10b981; color: #fff;}
-      100% { background: #fbbf24; color: #035988 }
+      0% { background: #36cfff; color: #005e5e }
+      48% { background: #2de18d; color: #fff;}
+      100% { background: #36cfff; color: #005e5e }
     }
     .reload-btn {
-      background: #2563eb;
+      background: #398eda;
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -108,16 +107,17 @@
       cursor: pointer;
       transition: background 0.16s;
     }
-    .reload-btn:hover { background: #1976d2; }
+    .reload-btn:hover { background: #22d0c0; color: #253653}
     .cards-area {
       width: 100%;
-      min-height: 176px;
+      min-height: 183px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
       position: relative;
       z-index: 3;
+      margin-bottom: 4px;
     }
     .cards-row {
       display: flex;
@@ -126,38 +126,36 @@
       gap: 32px;
       margin: 0;
       width: 100%;
-      min-height: 108px;
+      min-height: 112px;
     }
-    .cards-row.dealer { margin-bottom: 7px;}
-    .cards-row.player { margin-top: 7px;}
     .card {
-      width: 58px; height: 90px;
-      border-radius: 12px;
+      width: 61px; height: 91px;
+      border-radius: 13px;
       background: #fff;
       color: #222;
-      font-size: 1.18em;
+      font-size: 1.2em;
       font-weight: bold;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 14px #0009, 0 0 0 2px #fbbf24cc;
+      box-shadow: 0 2px 14px #000b, 0 0 0 2px #bee9e8cc;
       user-select: none;
       opacity: 0;
-      transform: scale(0.60) translateY(25px) rotate(-6deg);
-      animation: dealCard 0.4s cubic-bezier(.22,1.6,.22,1.05) forwards;
+      transform: scale(0.6) translateY(25px) rotate(-7deg);
+      animation: dealCard 0.41s cubic-bezier(.17,.9,.44,1.11) forwards;
       animation-delay: var(--delay, 0s);
-      background-image: linear-gradient(135deg, #fbbf2420, #fff 93%);
-      border: 2px solid #fbbf24;
+      border: 2px solid #21e6c1;
+      background-image: linear-gradient(135deg, #bee9e8 10%, #fff 100%);
       z-index: 2;
     }
     @keyframes dealCard {
-      0% { opacity: 0; transform: scale(0.60) translateY(25px) rotate(-6deg);}
-      60% { opacity: 1; transform: scale(1.13) translateY(-6px) rotate(6deg);}
-      100% { opacity: 1; transform: scale(1) translateY(0) rotate(0deg);}
+      0% { opacity: 0; transform: scale(0.6) translateY(25px) rotate(-7deg);}
+      60%{ opacity:1; transform: scale(1.09) translateY(-6px) rotate(7deg);}
+      100%{ opacity:1; transform: scale(1) translateY(0) rotate(0deg);}
     }
     .card.back {
-      background: repeating-linear-gradient(125deg,#2563eb 0 12px, #fff 12px 20px);
+      background: repeating-linear-gradient(55deg,#36cfff 0 11px, #fff 11px 19px);
       color: #fff0;
     }
     .bet-area {
@@ -165,209 +163,199 @@
       display: flex;
       justify-content: space-evenly;
       align-items: flex-end;
-      margin: 6px 0 1px 0;
+      margin-top: 9px;
       z-index: 5;
       position: absolute;
-      bottom: 159px;
+      bottom: 225px;
       left: 0;
       pointer-events: all;
     }
     .bet-box {
-      background: linear-gradient(135deg, #fbbf24 60%, #fde68a 100%);
-      border-radius: 17px;
-      padding: 10px 2px 9px 4px;
-      min-width: 70px;
+      background: linear-gradient(135deg, #bee9e8 65%, #36cfff 100%);
+      border-radius: 16px;
+      padding: 10px 2px 8px 4px;
+      min-width: 74px;
       text-align: center;
-      box-shadow: 0 2px 13px #fbbf2442, 0 0 0 2px #2563eb55 inset;
+      box-shadow: 0 2px 13px #36cfff55, 0 0 0 3px #fff1 inset;
       margin: 0 1px;
-      border: 2px solid #fde68a;
-      color: #035988;
+      border: 2px solid #36cfff;
+      color: #005e5e;
       font-weight: bold;
-      font-size: 1.06em;
+      font-size: 1.07em;
       cursor: pointer;
       position: relative;
       z-index: 7;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: flex; flex-direction: column; align-items: center;
     }
     .bet-box.blink-hint {
       animation: betPulse 1s infinite;
-      border: 2px solid #2563eb;
+      border: 2.5px solid #50b26e;
       z-index: 10;
     }
     @keyframes betPulse {
-      0%,100% { border-color: #2563eb; box-shadow: 0 0 10px 3px #2d9bf066; }
-      60% { border-color: #fbbf24; box-shadow: 0 0 4px 2px #fde68a85; }
+      0%,100% { border-color: #50b26e; box-shadow: 0 0 12px 3px #21e6c180; }
+      60% { border-color: #36cfff; box-shadow: 0 0 6px 3px #bee9e888; }
     }
     .bet-label { font-size: 1em; margin-bottom: 2px;}
-    .bet-amount { font-size: 1.1em; color: #1976d2; background: #fff9; margin-top:1px; border-radius:7px; padding: 1px 5.5px;}
+    .bet-amount { font-size: 1.09em; color: #000d38; background: #fff; margin-top:1px; border-radius:7px; padding: 1px 6px;}
     .actions-row {
       width: 100%;
       display: flex;
       justify-content: space-evenly;
       gap: 8px;
       position: absolute;
-      bottom: 94px;
+      bottom: 118px;
       left: 0;
       z-index: 9;
-      padding-bottom: 2px;
+      padding-bottom: 7px;
     }
     .action-btn {
-      background: #2563eb;
-      color: #fff;
+      background: #36cfff;
+      color: #253653;
       border: none;
       border-radius: 13px;
-      padding: 11px 16px;
-      font-size: 1.05em;
+      padding: 10px 15px;
+      font-size: 1.04em;
       cursor: pointer;
       font-weight: bold;
       letter-spacing: 1px;
-      box-shadow: 0 2px 8px #2563eb55;
-      animation: pulseBtn 1.45s infinite;
-      transition: background 0.18s, transform 0.11s;
+      box-shadow: 0 2px 8px #21e6c188;
+      animation: pulseBtn 1.3s infinite;
+      transition: background 0.15s, transform 0.10s;
     }
     .action-btn:active { transform: scale(0.96);}
     .action-btn:disabled {
-      background: #b3d8f7;
-      color: #7ba3c7;
+      background: #bee9e8;
+      color: #71b5a7;
       cursor: not-allowed;
       animation: none;
     }
     @keyframes pulseBtn {
       0% { box-shadow: 0 0 0 0 #2d9bf077; }
-      55% { box-shadow: 0 0 0 10px #a0e7e6a0; }
+      55% { box-shadow: 0 0 0 10px #41e1b590; }
       100% { box-shadow: 0 0 0 0 #2d9bf000; }
+    }
+    .rebet-btn {
+      background: #50b26e;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 10px 16px;
+      font-size: 1.01em;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px #27ffaf88;
+      margin-left: 2px;
+      transition: background 0.16s, transform 0.10s;
+      animation: pulseBtn 1.35s infinite;
+    }
+    .rebet-btn:active { transform: scale(0.96);}
+    .rebet-btn:disabled {
+      background: #bee9e8;
+      color: #71b5a7;
+      cursor: not-allowed;
+      animation: none;
     }
     .chips-row {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 13px;
       position: absolute;
-      bottom: 19px; left: 0; width: 100%;
+      bottom: 42px;
+      left: 0;
+      width: 100%;
       z-index: 10;
     }
     .chip {
-      width: 44px; height: 44px;
+      width: 46px; height: 46px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-weight: bold; font-size: 1.06em;
       color: #fff;
       border: 3px solid #fff8;
       cursor: pointer;
-      box-shadow: 0 2px 12px #0007;
-      background: linear-gradient(135deg, #fde68a 23%, #2563eb 99%);
+      box-shadow: 0 2px 11px #0007;
+      background: linear-gradient(135deg, #bee9e8 20%, #36cfff 99%);
       outline: 2.4px solid #fff;
       margin-top: 2px;
       transition: transform 0.15s, box-shadow 0.13s;
     }
     .chip.selected { 
       transform: scale(1.13); 
-      box-shadow: 0 0 0 4px #fbbf24c0, 0 2px 6px #2563ebb8;
+      box-shadow: 0 0 0 4px #50b26e88, 0 2px 6px #36cfffaa;
       z-index: 15;
     }
-    .chip.chip-50k { background: linear-gradient(135deg, #1976d2 55%, #fbbf24 100%);}
-    .chip.chip-100k { background: linear-gradient(135deg, #388e3c 40%, #fde68a 100%)}
-    .chip.chip-200k { background: linear-gradient(135deg, #8e44ad 60%, #fbbf24 100%)}
-    .chip.chip-500k { background: linear-gradient(120deg, #e67e22 40%, #fde68a 99%)}
+    .chip.chip-50k { background: linear-gradient(135deg, #398eda 60%, #21e6c1 100%);}
+    .chip.chip-100k { background: linear-gradient(135deg, #22d0c0 50%, #36cfff 100%)}
+    .chip.chip-200k { background: linear-gradient(135deg, #7d44fd 60%, #36cfff 100%)}
+    .chip.chip-500k { background: linear-gradient(120deg, #fd446d 40%, #bee9e8 99%)}
     .result-area {
       width: 100%;
       text-align: center;
-      font-size: 1.16em;
+      font-size: 1.12em;
       font-weight: bold;
       letter-spacing: 1px;
-      min-height: 30px;
-      margin: 7px 0 0 0;
+      min-height: 28px;
+      margin: 8px 0 0 0;
       transition: color 0.2s;
       z-index: 13;
       pointer-events: none;
       position: relative;
       background: none;
-      text-shadow: 0 2px 10px #30edb480, 0 0 5px #03598885;
+      text-shadow: 0 2px 9px #36cfff50, 0 0 4px #0f7b7bb0;
     }
     .result-area.win { color: #10b981; animation: winAnim 1.13s;}
-    .result-area.lose { color: #e74c3c; animation: loseAnim 1.13s;}
-    .result-area.push { color: #2563eb; animation: pushAnim 1.13s;}
-    @keyframes winAnim {
-      0% { color: #fff; }
-      60% { color: #10b981;}
-      100% { color: #fff;}
-    }
-    @keyframes loseAnim {
-      0% { color: #fff; }
-      60% { color: #e74c3c;}
-      100% { color: #fff;}
-    }
-    @keyframes pushAnim {
-      0% { color: #fff;}
-      55% { color: #2563eb; }
-      100% {color: #fff;}
-    }
+    .result-area.lose { color: #fd446d; animation: loseAnim 1.13s;}
+    .result-area.push { color: #36cfff; animation: pushAnim 1.13s;}
+    @keyframes winAnim {0%{color:#fff;}60%{color:#10b981;}100%{color:#fff;}}
+    @keyframes loseAnim {0%{color:#fff;}60%{color:#fd446d;}100%{color:#fff;}}
+    @keyframes pushAnim {0%{color:#fff;}60%{color:#36cfff;}100%{color:#fff;}}
     .win-fly, .win-anim-detail {
       position: absolute;
       left: 50%;
-      font-size: 1em;
+      font-size: 1.1em;
       color: #10b981;
       font-weight: bold;
       pointer-events: none;
       transform: translate(-50%, 0);
-      animation: flyWin 1.23s forwards;
+      animation: flyWin 1.28s forwards;
       z-index: 99;
       text-shadow: 0 1.5px 14px #56f3cd99;
     }
     .win-fly {
-      top: 23%;
-      font-size: 1.3em;
+      top: 16%;
+      font-size: 1.28em;
       letter-spacing: 2px;
-      background: #fbbf2470;
-      border-radius: 6px;
-      padding: 3px 12px;
+      background: #36cfff48;
+      border-radius: 7px;
+      padding: 3px 10px;
     }
     .win-anim-detail {
-      font-size: 1em;
-      padding: 0.5px 6px;
-      border-radius: 9px;
-      min-width: 48px;
+      font-size: .99em;
+      padding: 0.5px 5px;
+      border-radius: 8px;
+      min-width: 44px;
       left: unset;
-      right: 7%;
+      right: 10%;
       transform: none;
-      top: 8px;
-      opacity: 0.86;
-      background: #fffde484;
-      animation: flyWin 0.9s forwards;
+      top: 6px;
+      opacity: 0.84;
+      background: #bee9e8ce;
+      animation: flyWin 0.99s forwards;
     }
     @keyframes flyWin {
-      0% { opacity: 1; transform: translateX(50px) scale(1);}
-      80% { opacity: 1; transform: translateY(-44px) scale(1.23);}
-      100% { opacity: 0; transform: translateY(-90px) scale(0.7);}
-    }
-    .table-payouts { display: none; }
-    .rebet-btn {
-      background: #10b981;
-      color: #fff;
-      border: none;
-      border-radius: 13px;
-      padding: 11px 16px;
-      font-size: 1.05em;
-      cursor: pointer;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 8px #10b98188;
-      margin-left: 4px;
-      transition: background 0.18s, transform 0.11s;
-      animation: pulseBtn 1.45s infinite;
-    }
-    .rebet-btn:active { transform: scale(0.96);}
-    .rebet-btn:disabled {
-      background: #a7f3d0;
-      color: #38b2ac;
-      cursor: not-allowed;
-      animation: none;
+      0% { opacity: 1; transform: translateX(35px) scale(1);}
+      80% { opacity: 1; transform: translateY(-39px) scale(1.21);}
+      100% { opacity: 0; transform: translateY(-84px) scale(0.60);}
     }
     @media (max-width:480px) {
       .container { width: 100vw; height: 100vh; max-width: 100vw; max-height: 100vh;}
       .bet-box { min-width: 19vw;}
-      .chip { width: 11vw; height: 11vw;}
+      .chip { width: 12vw; height: 12vw;}
+      .actions-row { font-size: 87%; }
+      .bet-area { font-size: 90%;}
+      .balance { font-size: 1em;}
     }
   </style>
 </head>
@@ -404,6 +392,7 @@
       <button class="action-btn" id="playBtn" onclick="playHand()" disabled>Play</button>
       <button class="action-btn" id="clearBtn" onclick="clearBets()">Clear</button>
       <button class="rebet-btn" id="rebetBtn" onclick="rebetPrev()" disabled>Rebet</button>
+      <button class="action-btn" id="nextHandBtn" onclick="resetGame()" style="display:none;">Next Hand</button>
     </div>
     <div class="chips-row">
       <div class="chip chip-50k" onclick="selectChip(50000)">$50K</div>
@@ -424,7 +413,8 @@
     let playerHand = [];
     let dealerHand = [];
     let sixCardHand = [];
-    let onboardingActive = true;
+    let pendingPayout = 0;
+    let pendingBreakdown = { ante:0, pair:0, bonus:0 };
 
     function updateBalance(animate=false, increment=0) {
       const el = document.getElementById('balance');
@@ -439,20 +429,19 @@
             clearInterval(interval);
             el.textContent = '$' + balance.toLocaleString();
           }
-        }, 26);
+        }, 24);
       } else {
         el.textContent = '$' + balance.toLocaleString();
       }
       if (animate) {
         el.classList.add('animate');
-        setTimeout(()=>el.classList.remove('animate'), 900);
+        setTimeout(()=>el.classList.remove('animate'), 850);
       }
     }
     function updateBets() {
       document.getElementById('anteAmount').textContent = '$' + bets.ante.toLocaleString();
       document.getElementById('pairAmount').textContent = '$' + bets.pair.toLocaleString();
       document.getElementById('bonusAmount').textContent = '$' + bets.bonus.toLocaleString();
-      // Enable rebet if prevBets is set and current bets are all zero
       document.getElementById('rebetBtn').disabled = !(
         prevBets.ante || prevBets.pair || prevBets.bonus
       ) || (bets.ante || bets.pair || bets.bonus);
@@ -490,7 +479,7 @@
         cardDiv.style.setProperty('--delay', (i*0.11)+'s');
         if (!reveal) cardDiv.classList.add('back');
         else if (card.rank) {
-          cardDiv.innerHTML = `<span>${card.rank}</span><span style="font-size:1.2em;color:${(card.suit=='♥'||card.suit=='♦')?'#e74c3c':'#222'}">${card.suit}</span>`;
+          cardDiv.innerHTML = `<span>${card.rank}</span><span style="font-size:1.2em;color:${(card.suit=='♥'||card.suit=='♦')?'#fd446d':'#222'}">${card.suit}</span>`;
         }
         el.appendChild(cardDiv);
       });
@@ -519,6 +508,7 @@
       renderCards(playerHand, 'playerCards', true);
       gameState = 'dealt';
       enableActions(true);
+      showNextHandButton(false);
       document.getElementById('foldBtn').disabled = false;
       document.getElementById('playBtn').disabled = false;
       document.getElementById('dealBtn').disabled = true;
@@ -536,8 +526,11 @@
     function foldHand() {
       if (gameState !== 'dealt') return;
       renderCards(dealerHand, 'dealerCards', true);
+      showNextHandButton(true);
       animateWinBreakdown({total: 0, ante: 0, pair: 0, bonus: 0});
       announceMsg('You folded.', 0, 'lose');
+      pendingPayout = 0;
+      pendingBreakdown = { ante:0, pair:0, bonus:0 };
       endHand();
     }
     function playHand() {
@@ -555,28 +548,65 @@
       bonusWin=sixCardBonusPayout(sixCardHand, bonus);
       let anteBonus=anteBonusPayout(playerHand, ante);
       payout+=pairWin+bonusWin+anteBonus; if(anteBonus) anteWin+=anteBonus;
+      pendingPayout = payout;
+      pendingBreakdown = { ante: anteWin, pair: pairWin, bonus: bonusWin };
+      // Animate and wait for "Next Hand"
       animateWinBreakdown({total:payout, ante: anteWin, pair: pairWin, bonus: bonusWin});
+      showNextHandButton(true);
       if (payout > 0) announceMsg("You win $" + payout.toLocaleString()+"!", payout, "win");
       else if (winType==="push") announceMsg("Push. Ante returned.", ante, "push");
       else announceMsg("You lose.", 0, "lose");
-      balance += payout;
-      updateBalance(true, payout);
-      endHand();
+      endHand(true);
+    }
+    function showNextHandButton(show){
+      document.getElementById('nextHandBtn').style.display = show?'inline-block':'none';
+      // hide all action buttons except Next Hand
+      document.getElementById('dealBtn').style.display = show?'none':'inline-block';
+      document.getElementById('foldBtn').style.display = show?'none':'inline-block';
+      document.getElementById('playBtn').style.display = show?'none':'inline-block';
+      document.getElementById('clearBtn').style.display = show?'none':'inline-block';
+      document.getElementById('rebetBtn').style.display = show?'none':'inline-block';
+    }
+    function resetGame() {
+      // Show winnings to bankroll now
+      if (pendingPayout > 0) {
+        balance += pendingPayout;
+        updateBalance(true, pendingPayout);
+      }
+      pendingPayout = 0;
+      pendingBreakdown = { ante:0, pair:0, bonus:0 };
+      gameState = 'betting';
+      bets = { ante: 0, pair: 0, bonus: 0 };
+      updateBets();
+      renderCards([], 'playerCards');
+      renderCards([], 'dealerCards');
+      enableActions(true);
+      document.getElementById('foldBtn').disabled = true;
+      document.getElementById('playBtn').disabled = true;
+      document.getElementById('dealBtn').disabled = false;
+      document.getElementById('clearBtn').disabled = false;
+      document.getElementById('rebetBtn').disabled = !(
+        prevBets.ante || prevBets.pair || prevBets.bonus
+      );
+      resultArea('');
+      showNextHandButton(false);
     }
     function announceMsg(msg, amount, type) {
-      resultArea(msg, type);
+      let el = document.getElementById('resultArea');
+      el.textContent = msg;
+      el.className = 'result-area' + (type ? ' '+type : '');
       if (amount > 0) {
         let fly = document.createElement('div');
         fly.className = 'win-fly';
         fly.textContent = '+$'+amount.toLocaleString();
         document.querySelector('.container').appendChild(fly);
-        setTimeout(()=>fly.remove(), 1200);
+        setTimeout(()=>fly.remove(), 1250);
       }
     }
     function animateWinBreakdown(breakdown) {
       animateBreakInd('anteBox', breakdown.ante, "#10b981", "Ante +" + (breakdown.ante));
-      animateBreakInd('pairBox', breakdown.pair, "#2563eb", "Pair+ +" + (breakdown.pair));
-      animateBreakInd('bonusBox', breakdown.bonus, "#fbbf24", "6Card +" + (breakdown.bonus));
+      animateBreakInd('pairBox', breakdown.pair, "#36cfff", "Pair+ +" + (breakdown.pair));
+      animateBreakInd('bonusBox', breakdown.bonus, "#fd446d", "6Card +" + (breakdown.bonus));
     }
     function animateBreakInd(boxId, amt, color, txt) {
       if (!amt) return;
@@ -594,25 +624,9 @@
       elem.classList.add('blink-hint');
       setTimeout(()=>elem.classList.remove('blink-hint'), 1500);
     }
-    function endHand() {
+    function endHand(waitForNextHand) {
       enableActions(false);
-      setTimeout(()=>resetGame(), 1700);
-    }
-    function resetGame() {
-      gameState = 'betting';
-      bets = { ante: 0, pair: 0, bonus: 0 };
-      updateBets();
-      renderCards([], 'playerCards');
-      renderCards([], 'dealerCards');
-      enableActions(true);
-      document.getElementById('foldBtn').disabled = true;
-      document.getElementById('playBtn').disabled = true;
-      document.getElementById('dealBtn').disabled = false;
-      document.getElementById('clearBtn').disabled = false;
-      document.getElementById('rebetBtn').disabled = !(
-        prevBets.ante || prevBets.pair || prevBets.bonus
-      );
-      resultArea('');
+      if (!waitForNextHand) setTimeout(()=>resetGame(), 1400);
     }
     document.querySelectorAll('.bet-box').forEach((box, idx) => {
       box.onclick = () => {
@@ -732,6 +746,15 @@
       if (val.rank === 5) return bet * 4;
       return 0;
     }
+
+    // Make sure everything fits regardless of screen
+    window.addEventListener('resize', fixLayout);
+    function fixLayout() {
+      document.body.style.overflow='hidden';
+      document.querySelector('.container').style.height = window.innerHeight+'px';
+      document.querySelector('.container').style.width = window.innerWidth+'px';
+    }
+    fixLayout();
   </script>
 </body>
 </html>
