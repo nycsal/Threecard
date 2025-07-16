@@ -9,30 +9,26 @@
       margin: 0;
       padding: 0;
       width: 100vw; height: 100vh;
-      min-width: 100vw; min-height: 100vh;
       background: linear-gradient(135deg, #253653 0%, #50aba7 100%);
       overflow: hidden;
-      user-select: none;
     }
     body, .container {
-      width: 100vw; height: 100vh; min-width: 100vw; min-height: 100vh;
+      width: 100vw; height: 100vh;
+      min-width: 100vw; min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
       box-sizing: border-box;
     }
     .container {
       position: fixed; top: 0; left: 0;
-      max-width: 430px; max-height: 840px; min-width: 300px;
+      max-width: 430px; max-height: 850px; min-width: 300px;
       margin: 0 auto;
-      border-radius: 0;
-      box-shadow: 0 8px 44px #000c;
       background: linear-gradient(135deg,#222c38 68%, #2cb7a9 120%) fixed;
-      touch-action: none;
       overflow: hidden;
       z-index: 1;
     }
     .branding {
-      margin-top: 14px; margin-bottom: 5px;
-      font-size: 1.14em;
+      margin-top: 13px; margin-bottom: 4px;
+      font-size: 1.13em;
       letter-spacing: 2px;
       font-weight: bold;
       color: #fff;
@@ -42,60 +38,47 @@
       box-shadow: 0 0 8px 2px #12d0c2a0;
       text-align: center;
       z-index: 3;
-      position: relative;
-      border: 1.5px solid #fff3;
-      opacity: 0.95;
       width: 60%;
     }
     h1 {
-      margin: 3px 0 2px 0;
+      margin: 2px 0 2px 0;
       font-size: 2em;
       letter-spacing: 2.5px;
       color: #f5fafd;
       text-shadow: 0 3px 14px #0b2129, 0 0 3px #41e1b5;
       font-family: 'Segoe UI', Arial, sans-serif;
       text-align: center;
-      font-weight: bold; opacity: 0.95;
-    }
-    .canvas-bg {
-      position:absolute;
-      top:0; left:0;
-      z-index:0;
-      width:100%; height:100%;
-      pointer-events:none;
-      background:
-        linear-gradient(139deg, #0d252a66 60%, #52e8ba33 110%) ,
-        repeating-linear-gradient(101deg, rgba(55,211,179,.045) 0 22px, #33496306 22px 36px);
-      filter: blur(0.4px) brightness(1.12) contrast(1.09);
+      font-weight: bold;
+      opacity: 0.96;
     }
     .balance-area {
-      width: 92%; min-height: 36px;
+      width: 94%; min-height: 36px;
       display: flex; justify-content: space-between; align-items: center;
       background: linear-gradient(90deg, #4de7cecc, #272d38bb 82%);
       border-radius: 13px;
-      margin-bottom: 2px;
-      padding: 8px 14px 6px 14px;
-      box-shadow: 0 2px 6px 0 #097b7b30;
+      margin-bottom: 4px;
+      padding: 8px 13px 6px 13px;
+      box-shadow: 0 2px 6px 0 #097b7b28;
       font-size: 1.06em;
       z-index: 3;
-      opacity: 0.97;
+      opacity: 0.98;
     }
     .balance {
-      font-size: 1.14em;
+      font-size: 1.15em;
       font-weight: bold;
       color: #e3fcff;
       background: #083120ed;
       padding: 4px 16px;
-      border-radius: 9px;
-      transition: background 0.31s, color 0.24s, transform 0.26s;
+      border-radius: 10px;
+      transition: background 0.29s, color 0.27s, transform 0.22s;
       border: 1.5px solid #18dad9b0;
-      box-shadow: 0 0 0 2.5px #2764ed22;
+      box-shadow: 0 0 0 2.5px #2764ed21;
     }
     .balance.animate {
       color: #fff;
-      background: #149d6a;
-      animation: bankPulse 0.77s;
-      transform: scale(1.14);
+      background: #188072;
+      animation: bankPulse 0.7s;
+      transform: scale(1.13);
     }
     @keyframes bankPulse {
       0% { background: #083120ed; color: #e3fcff; }
@@ -103,9 +86,8 @@
       100% { background: #083120ed; color: #e3fcff; }
     }
     .reload-btn {
-      background: #3e97ca;
-      color: #fff;
-      border: none;
+      background: #398eda;
+      color: #fff; border: none;
       border-radius: 8px;
       padding: 6px 14px;
       font-size: 1em;
@@ -115,238 +97,187 @@
       transition: background 0.14s;
     }
     .reload-btn:hover { background: #16afc1; color: #fff;}
-    /* BET AREA UI */
+    .cards-area {
+      width: 100%; min-height:176px;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+      position: relative; z-index: 3;
+      margin-bottom: 2px;
+      margin-top: 9px;
+    }
+    .cards-row {
+      display: flex; justify-content: center; align-items: center;
+      gap: 38px;
+      min-height: 110px; width: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .card {
+      width: 64px; height: 92px;
+      border-radius: 13px;
+      background: #fff;
+      color: #222;
+      font-size: 1.18em;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 13px #000b, 0 0 0 2px #bee9e8cc;
+      user-select: none;
+      opacity: 0;
+      transform: scale(0.62) translateY(17px) rotate(-7deg);
+      animation: dealCard 0.44s cubic-bezier(.18,.9,.43,1.09) forwards;
+      animation-delay: var(--delay, 0s);
+      border: 2px solid #21e6c1;
+      background-image: linear-gradient(135deg, #bee9e8 10%, #fff 100%);
+      z-index: 2;
+    }
+    @keyframes dealCard {
+      0% { opacity: 0; transform: scale(0.62) translateY(17px) rotate(-7deg);}
+      60%{ opacity:1; transform: scale(1.09) translateY(-9px) rotate(9deg);}
+      100%{ opacity:1; transform: scale(1) translateY(0) rotate(0deg);}
+    }
+    .card.back {
+      background: repeating-linear-gradient(55deg,#36cfff 0 11px, #fff 11px 19px);
+      color: #fff0;
+    }
     .bet-area {
       width: 99%;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: flex-end;
-      margin-top: 7px;
-      margin-bottom: 4px;
+      display: flex; justify-content: space-evenly; align-items: flex-end;
+      margin-top: 5px;
+      margin-bottom: 8px;
       z-index: 10;
       position: absolute;
-      left: 0; bottom: 222px;
+      left: 0; bottom: 210px;
       pointer-events: all;
-      gap: 5vw;
+      gap: 4vw;
     }
     .bet-box {
       background: rgba(21,36,69,0.98);
-      border-radius: 24px;
-      padding: 14px 5px 8px 7px;
-      min-width: 88px; max-width: 33vw;
+      border-radius: 22px;
+      padding: 13px 6px 11px 6px;
+      min-width: 86px; max-width: 33vw;
       text-align: center;
-      box-shadow: 0 4px 18px 3px #1ec2c339, 0 0 0 6px #13adb616 inset;
+      box-shadow: 0 4px 17px 3px #1ec2c335, 0 0 0 4px #13adb610 inset;
       margin: 0 2px;
-      border: 3.5px solid #1ec2c3b5;
+      border: 3px solid #21e6c1c3;
       font-weight: bold;
       color: #caf0fd;
-      font-size: 1.08em;
+      font-size: 1.07em;
       cursor: pointer;
       position: relative;
       z-index: 14;
       transition: border-color 0.15s;
     }
     .bet-box.blink-hint {
-      animation: betPulse 1s infinite;
+      animation: betPulse 1.01s infinite;
       border-color: #e67774 !important;
-      box-shadow: 0 0 20px 6px #e67774cc, 0 0 0 6px #13adb655 inset;
+      box-shadow: 0 0 15px 4px #e67774d9, 0 0 0 5px #13adb636 inset;
     }
     .bet-box.selected {
       border-color: #76fae1 !important;
-      box-shadow: 0 0 20px 7px #24aed1aa, 0 0 0 6px #13adb655 inset;
+      box-shadow: 0 0 16px 5px #24aed1a0, 0 0 0 4px #13adb638 inset;
     }
     @keyframes betPulse {
-      0%,100% { border-color: #e67774;
-                box-shadow: 0 0 14px 6px #e67774bb; }
-      58% { border-color: #e3fcff;
-            box-shadow: 0 0 8px 2px #caf0fd; }
+      0%,100% { border-color: #e67774; box-shadow: 0 0 15px 5px #e67774bb; }
+      57% { border-color: #e3fcff; box-shadow: 0 0 8px 3px #caf0fd; }
     }
-    .bet-label { font-size: 1.06em; margin-bottom: 3px; font-family: 'Segoe UI', Arial, sans-serif;}
-    .bet-amount { font-weight: bold; font-size: 1.19em; color: #e3fcff; background: #212b36e1; border-radius: 7px; padding: 2px 9px; margin-top:0;}
-    /* Action Guide PULSE */
-    .chips-row.pulse-guide .chip { animation: chipPulse 0.88s infinite; }
-    @keyframes chipPulse {
-      0%,100%{ box-shadow: 0 0 10px 2px #50cbec, 0 0 0 0 #40e0d0; }
-      40% { box-shadow: 0 0 24px 6px #40e0d0aa, 0 0 0 6px #36cfff44;}
-    }
-    .bet-area.pulse-guide .bet-box {
-      animation: betPulse 1.02s infinite;
-    }
-    .actions-row.pulse-guide #dealBtn {
-      animation: btnGuidePulse 1.06s infinite;
-    }
-    @keyframes btnGuidePulse {
-      0%,100% { box-shadow: 0 0 0 0 #24aed1; }
-      50% { box-shadow: 0 0 18px 4px #72edfa70; }
-    }
+    .bet-label { font-size: 1.08em; margin-bottom: 3px; font-family: 'Segoe UI', Arial, sans-serif;}
+    .bet-amount { font-weight: bold; font-size: 1.15em; color: #e3fcff; background: #212b36e6; border-radius: 8px; padding: 2px 8px; margin-top:1px;}
     .chips-row {
       display: flex;
       justify-content: center;
       gap: 12px;
       position: absolute;
-      bottom: 63px;
+      bottom: 105px; /* <<- lifted up so always visible! */
       left: 0; width: 100%;
       z-index: 50;
     }
     .chip {
-      width: 44px; height: 44px;
+      width: 49px; height: 49px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-weight: bold; font-size: 1.11em;
+      font-weight: bold; font-size: 1.12em;
       color: #e3fcff;
-      border: 3px solid #fff8;
+      border: 2.7px solid #fff8;
       cursor: pointer;
       box-shadow: 0 2px 14px #000d;
       background: linear-gradient(135deg, #bee9e8 10%, #41e1b5 110%);
-      outline: 2.5px solid #fff8;
-      margin-top: 2px;
-      transition: transform 0.15s, box-shadow 0.12s;
+      outline: 2.4px solid #fff8;
+      transition: transform 0.14s, box-shadow 0.12s;
     }
     .chip.selected { 
-      transform: scale(1.13); 
-      box-shadow: 0 0 0 4px #41e1b5a0, 0 2px 8px #cdfafcab;
+      transform: scale(1.15); 
+      box-shadow: 0 0 0 4px #41e1b5a0, 0 2px 8px #cdfafcac;
       z-index: 15;
     }
-    .chip.chip-50k { background: linear-gradient(135deg, #3c5ca9 70%, #50aba7 110%);}
+    .chip.chip-50k { background: linear-gradient(135deg, #3c5ca9 80%, #50aba7 110%);}
     .chip.chip-100k { background: linear-gradient(135deg, #36cfff 85%, #732f82 130%)}
     .chip.chip-200k { background: linear-gradient(135deg, #93f5ec 60%, #f386a1 130%)}
-    .chip.chip-500k { background: linear-gradient(135deg, #f386a1 110%, #2cb7a9 40%)}
-    .cards-area {
-      width: 98%; min-height: 160px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      position: relative;
-      z-index: 10;
-      margin-bottom: 2px;
-    }
-    .cards-row {
-      display: flex; justify-content: center; align-items: center;
-      gap: 35px;
-      margin: 0;
-      width: 100%;
-      min-height: 108px;
-      z-index: 2;
-      pointer-events: none;
-    }
+    .chip.chip-500k { background: linear-gradient(135deg, #f386a1 120%, #2cb7a9 40%)}
     .result-area {
-      width: 99%;
-      text-align: center;
-      font-size: 1.11em;
-      font-weight: bold;
-      letter-spacing: 1px;
-      min-height: 30px;
-      margin: 8px 0 0 0;
-      transition: color 0.2s;
+      width: 100%; text-align: center;
+      font-size: 1.17em; font-weight: bold; letter-spacing: 1px;
+      min-height: 32px; margin: 8px 0 0 0;
       z-index: 23; pointer-events: none; position: relative; background: none;
-      text-shadow: 0 2px 7px #36cfff24, 0 0 5px #04bcbeb3;
+      text-shadow: 0 2px 10px #36cfff25, 0 0 5px #34CCCAbb;
     }
-    .result-area.win { color: #24e677; animation: winAnim 1.16s;}
-    .result-area.lose { color: #e67774; animation: loseAnim 1.11s;}
-    .result-area.push { color: #36cfff; animation: pushAnim 1.16s;}
+    .result-area.win { color: #24e677; animation: winAnim 1.08s;}
+    .result-area.lose { color: #e67774; animation: loseAnim 1.08s;}
+    .result-area.push { color: #36cfff; animation: pushAnim 1.08s;}
     @keyframes winAnim {0%{color:#fff;}60%{color:#24e677;}100%{color:#fff;}}
     @keyframes loseAnim {0%{color:#fff;}60%{color:#e67774;}100%{color:#fff;}}
     @keyframes pushAnim {0%{color:#fff;}60%{color:#36cfff;}100%{color:#fff;}}
     .win-fly, .win-anim-detail {
       position: absolute;
-      left: 50%;
-      font-size: 1.09em;
-      color: #24e677;
-      font-weight: bold;
-      pointer-events: none;
-      transform: translate(-50%, 0);
-      animation: flyWin 1.18s forwards;
-      z-index: 99;
-      text-shadow: 0 2px 12px #59e67788;
+      left: 50%; font-size: 1.08em; color: #24e677; font-weight: bold;
+      pointer-events: none; transform: translate(-50%, 0); animation: flyWin 1.15s forwards;
+      z-index: 99; text-shadow: 0 2px 11px #59e67786;
     }
     .win-fly {
-      top: 24%;
-      font-size: 1.18em;
+      top: 23%; font-size: 1.17em;
       letter-spacing: 2px;
-      background: #011e1858;
+      background: #011e1855;
       border-radius: 7px;
       padding: 3px 10px;
     }
     .win-anim-detail {
-      font-size: .96em;
-      padding: 0.2px 5px;
-      border-radius: 9px;
-      min-width: 41px;
-      left: unset;
-      right: 10%;
-      transform: none;
-      top: 6px;
-      opacity: 0.84;
-      background: #011e1863;
-      animation: flyWin 0.93s forwards;
+      font-size: .99em; padding: 0.2px 5px; border-radius: 9px; min-width: 41px;
+      left: unset; right: 10%; transform: none; top: 6px; opacity: 0.84; background: #011e1850;
+      animation: flyWin 0.88s forwards;
     }
     @keyframes flyWin {
-      0% { opacity: 1; transform: translateX(25px) scale(1);}
-      80% { opacity: 1; transform: translateY(-36px) scale(1.14);}
-      100% { opacity: 0; transform: translateY(-68px) scale(0.6);}
+      0% { opacity: 1; transform: translateX(21px) scale(1);}
+      80% { opacity: 1; transform: translateY(-34px) scale(1.11);}
+      100% { opacity: 0; transform: translateY(-72px) scale(0.58);}
     }
     .actions-row {
       width: 100%;
-      display: flex; justify-content: space-evenly; gap: 7px;
+      display: flex; justify-content: space-evenly; gap: 8px;
       position: absolute;
-      bottom: 93px;
+      bottom: 38px; /* <<- raised so always visible! */
       left: 0; z-index: 39;
       padding-bottom: 6px;
     }
-    .action-btn {
-      background: #36cfff;
-      color: #222c38;
-      border: none;
-      border-radius: 12px;
-      padding: 9px 16px;
-      font-size: 1.1em;
-      cursor: pointer;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 18px #36cfff33;
-      transition: background 0.11s, transform 0.11s;
-      display: inline-block;
-      margin: 0 1px;
-    }
-    .action-btn:active { transform: scale(0.97);}
-    .action-btn:disabled {
-      background: #bee9e8;
-      color: #71b5a7;
-      cursor: not-allowed;
-      animation: none;
-    }
-    .rebet-btn {
-      background: #24e677;
-      color: #253653;
-      border: none;
-      border-radius: 12px;
-      padding: 9px 13px;
-      font-size: .98em;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 2px 7px #24e67733;
-      margin-left: 2px; animation: pulseBtn 1.45s infinite;
-      transition: background 0.18s, transform 0.10s;
-    }
-    .rebet-btn:active { transform: scale(0.95);}
-    .rebet-btn:disabled {
-      background: #bee9e8;
-      color: #71b5a7;
-      cursor: not-allowed;
-      animation: none;
-    }
-    #nextHandBtn { background: #41e1b5; color: #222c38; }
-    #nextHandBtn:active { background: #24e677; }
+    .action-btn { background: #36cfff; color: #222c38; border: none; border-radius: 12px; padding: 9px 15px;
+      font-size: 1.06em; cursor: pointer; font-weight: bold; box-shadow: 0 2px 18px #36cfff33; margin: 0 1.5px;}
+    .action-btn:active { transform: scale(0.98);}
+    .action-btn:disabled { background: #bee9e8;color: #71b5a7; cursor: not-allowed;}
+    .rebet-btn      { background: #24e677; color:#253653; border-radius:12px; padding:9px 13px;
+      font-size:.98em; cursor:pointer; font-weight:bold; margin-left:2px; }
+    .rebet-btn:active { transform:scale(0.97);}
+    .rebet-btn:disabled { background:#bee9e8; color:#71b5a7; cursor:not-allowed;}
+    #nextHandBtn { background:#41e1b5; color: #222c38;}
+    #nextHandBtn:active { background:#24e677;}
     @media (max-width: 480px) {
-      .container { width: 100vw; height: 100vh; max-width: 100vw; max-height: 100vh; border-radius:0;}
-      .bet-box { min-width: 22vw; }
-      .chip { width: 12vw; height: 12vw;}
+      .container { max-width: 100vw; max-height: 100vh;}
+      .cards-row { gap: 17vw;}
+      .bet-box { min-width: 23vw; }
+      .chip { width: 13vw; height: 13vw;}
     }
   </style>
 </head>
 <body>
-  <div class="canvas-bg"></div>
   <div class="container">
     <div class="branding">KakaReza</div>
     <h1>THREE CARD POKER</h1>
@@ -403,19 +334,6 @@
     let sixCardHand = [];
     let pendingPayout = 0;
     let pendingBreakdown = { ante:0, pair:0, bonus:0 };
-    // --- UI PULSE GUIDE
-    let guideStep = 0;
-    function updateGuidePulse() {
-      document.getElementById('chipsRow').classList.remove('pulse-guide');
-      document.getElementById('betRowContainer').classList.remove('pulse-guide');
-      document.getElementById('actionsRow').classList.remove('pulse-guide');
-      // 0: pulse chips, 1: pulse bet area, 2: pulse deal
-      if (guideStep === 0) document.getElementById('chipsRow').classList.add('pulse-guide');
-      else if (guideStep === 1) document.getElementById('betRowContainer').classList.add('pulse-guide');
-      else if (guideStep === 2) document.getElementById('actionsRow').classList.add('pulse-guide');
-    }
-    function nextGuideStep() { guideStep++; updateGuidePulse(); }
-    function gotoGuideStep(n) { guideStep = n; updateGuidePulse(); }
 
     function updateBalance(animate=false, increment=0) {
       const el = document.getElementById('balance');
@@ -446,12 +364,6 @@
       document.getElementById('rebetBtn').disabled = !(
         prevBets.ante || prevBets.pair || prevBets.bonus
       ) || (bets.ante || bets.pair || bets.bonus);
-      // GUIDE: If any bet placed, pulse deal; else pulse bets
-      if (gameState==="betting") {
-        if (!(bets.ante||bets.pair||bets.bonus)) {
-          gotoGuideStep(selectedChip?1:0);
-        } else gotoGuideStep(2);
-      }
     }
     function selectChip(amount) {
       selectedChip = amount;
@@ -459,15 +371,12 @@
         chip.classList.remove('selected');
         if (chip.textContent.replace(/\$|K/g,'') == (amount/1000).toString()) chip.classList.add('selected');
       });
-      // PULSE: after first chip pick, step to bet area
-      if (gameState==="betting") gotoGuideStep(1);
     }
     function clearBets() {
       if (gameState !== 'betting') return;
       bets = { ante: 0, pair: 0, bonus: 0 };
       updateBets();
       resultArea('');
-      gotoGuideStep(selectedChip?1:0);
     }
     function reloadBalance() {
       balance = 5000000;
@@ -525,11 +434,6 @@
       document.getElementById('clearBtn').disabled = true;
       document.getElementById('rebetBtn').disabled = true;
       resultArea('Choose: Play or Fold?');
-      // PULSE play/fold
-      document.getElementById('actionsRow').classList.remove('pulse-guide');
-      setTimeout(()=>{
-         document.getElementById('actionsRow').classList.add('pulse-guide');
-      },350);
     }
     function enableActions(enable) {
       document.getElementById('foldBtn').disabled = !enable;
@@ -579,10 +483,8 @@
       document.getElementById('playBtn').style.display = show?'none':'inline-block';
       document.getElementById('clearBtn').style.display = show?'none':'inline-block';
       document.getElementById('rebetBtn').style.display = show?'none':'inline-block';
-      document.getElementById('actionsRow').classList.remove('pulse-guide');
     }
     function resetGame() {
-      // After next hand: show winnings to bankroll now
       if (pendingPayout > 0) {
         balance += pendingPayout;
         updateBalance(true, pendingPayout);
@@ -604,7 +506,6 @@
       );
       resultArea('');
       showNextHandButton(false);
-      gotoGuideStep(selectedChip?1:0);
     }
     function announceMsg(msg, amount, type) {
       let el = document.getElementById('resultArea');
@@ -615,7 +516,7 @@
         fly.className = 'win-fly';
         fly.textContent = '+$'+amount.toLocaleString();
         document.querySelector('.container').appendChild(fly);
-        setTimeout(()=>fly.remove(), 1280);
+        setTimeout(()=>fly.remove(), 1250);
       }
     }
     function animateWinBreakdown(breakdown) {
@@ -637,11 +538,11 @@
     function pulseBetBox(id) {
       var elem=document.getElementById(id);
       elem.classList.add('blink-hint');
-      setTimeout(()=>elem.classList.remove('blink-hint'), 1200);
+      setTimeout(()=>elem.classList.remove('blink-hint'), 1100);
     }
     function endHand(waitForNextHand) {
       enableActions(false);
-      if (!waitForNextHand) setTimeout(()=>resetGame(), 1370);
+      if (!waitForNextHand) setTimeout(()=>resetGame(), 1280);
     }
     document.querySelectorAll('.bet-box').forEach((box, idx) => {
       box.onclick = () => {
@@ -653,7 +554,7 @@
           updateBets();
           updateBalance();
           box.classList.add('selected');
-          setTimeout(()=>box.classList.remove('selected'), 200);
+          setTimeout(()=>box.classList.remove('selected'), 180);
         } else {
           resultArea('Insufficient balance!', 'lose');
         }
@@ -672,7 +573,7 @@
       updateBalance();
     }
     selectChip(50000);
-    /* Hand eval as before... */
+
     function handValue(hand) {
       let vals = hand.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);
       let suits = hand.map(c=>c.suit);
@@ -761,9 +662,6 @@
       if (val.rank === 5) return bet * 4;
       return 0;
     }
-    // Initial guide
-    setTimeout(()=>gotoGuideStep(0),110);
-    // Always fit
     window.addEventListener('resize', fixLayout);
     function fixLayout() {
       document.querySelector('.container').style.height = window.innerHeight+'px';
