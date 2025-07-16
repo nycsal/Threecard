@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
     html, body {
-      margin: 0; padding: 0;
-      height: 100vh; width: 100vw;
-      background: linear-gradient(135deg, #233246 80%, #294d56 100%);
+      margin: 0; padding: 0; height: 100vh; width: 100vw;
+      min-width: 100vw; min-height: 100vh;
+      background: linear-gradient(130deg, #243447 78%, #29575d 100%);
       font-family: 'Segoe UI', Arial, sans-serif;
       overflow: hidden;
-      touch-action: manipulation;
     }
     body {
       display: flex; align-items: center; justify-content: center;
@@ -20,278 +19,74 @@
     .container {
       width: 100vw; max-width: 430px;
       height: 100vh; max-height: 870px;
-      background: linear-gradient(120deg, #233246 82%, #294d56 110%);
-      box-shadow: 0 3px 32px #000B, 0 0 0 4px #243e5722;
-      border-radius: 0;
+      background: linear-gradient(120deg, #243447 80%, #29575d 110%);
+      box-shadow: 0 3px 32px #000B;
       display: flex; flex-direction: column;
       align-items: center; overflow: hidden; position: relative;
     }
-    .branding {
-      margin-top: 12px; margin-bottom: 4px;
-      font-size: 1.18em;
-      letter-spacing: 2px; font-weight: bold;
-      color: #fff; background: #2979b2;
-      padding: 5px 18px 6px 18px;
-      border-radius: 12px;
-      box-shadow: 0 0 8px 2px #22739bcf;
-      text-align: center; opacity: .95;
-    }
-    h1 {
-      margin: 2px 0 2px 0;
-      font-size: 2.06em;
-      letter-spacing: 2.2px;
-      color: #e7f5ff; font-weight: bold;
-      text-shadow: 0 2px 14px #29618950;
-    }
-    .balance-area {
-      width: 94%; min-height: 36px;
-      display: flex; justify-content: space-between; align-items: center;
-      background: linear-gradient(90deg, #22435acc, #233246bb 90%);
-      border-radius: 13px;
-      margin-bottom: 3px;
-      padding: 8px 16px 7px 14px;
-      box-shadow: 0 2px 6px #1935512a;
-      font-size: 1.11em;
-    }
-    .balance {
-      font-size: 1.18em;
-      font-weight: bold; color: #f7fcff;
-      background: #24495b;
-      padding: 4px 17px;
-      border-radius: 10px;
-      border: 1.5px solid #369fc6a0;
-      box-shadow: 0 0 6px #2e90a431;
-      transition: background 0.15s, color 0.18s, transform 0.13s;
-    }
-    .balance.animate {
-      color: #fff;
-      background: #53baad;
-      animation: bankPulse 0.69s;
-      transform: scale(1.10);
-    }
-    @keyframes bankPulse {
-      0% { background: #24495b; color: #f7fcff;}
-      70% { background: #53baad; color: #213a49;}
-      100% {background: #24495b; color: #f7fcff;}
-    }
-    .reload-btn {
-      background: #2979b2;
-      color: #f6fcff;
-      border: none; border-radius: 8px;
-      padding: 7px 15px 6px 15px;
-      font-size: 1em; font-weight: bold;
-      transition: background 0.12s;
-      box-shadow: 0 2px 8px #2a648d33;
-      cursor: pointer;
-    }
+    .branding { margin-top: 12px; margin-bottom: 4px; font-size: 1.17em; letter-spacing: 2px; font-weight: bold; color: #fff; background: #2b95b5; padding: 5px 18px 6px 18px; border-radius: 12px; box-shadow: 0 0 8px 2px #2196aede; text-align: center; opacity: .94; }
+    h1 { margin: 2px 0 2px 0; font-size: 2.03em; letter-spacing: 2.1px; color: #ebf6ff; font-weight: bold; text-shadow: 0 2px 11px #18697c25; }
+    .balance-area { width: 94%; min-height: 36px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(90deg, #295b6dcc, #243447bb 90%); border-radius: 13px; margin-bottom: 3px; padding: 8px 16px 7px 14px; font-size: 1.11em; }
+    .balance { font-size: 1.18em; font-weight: bold; color: #f7fcff; background: #24495b; padding: 4px 17px; border-radius: 10px; border: 1.5px solid #369fc6a0; box-shadow: 0 0 6px #2e90a431; transition: background 0.15s, color 0.14s, transform 0.12s; }
+    .balance.animate { color: #fff; background: #53baad; animation: bankPulse .7s; transform: scale(1.10); }
+    @keyframes bankPulse { 0% { background: #24495b; color: #f7fcff;} 62% { background: #53baad; color: #213a49;} 100% {background: #24495b; color: #f7fcff;} }
+    .reload-btn { background: #2979b2; color: #f6fcff; border: none; border-radius: 8px; padding: 7px 15px 6px 15px; font-size: 1em; font-weight: bold; transition: background 0.12s; box-shadow: 0 2px 8px #2a648d22; cursor: pointer; }
     .reload-btn:hover { background: #38a3c8; color: #243e57;}
-    .main-ui { width: 100%; display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-start; flex: 1 1 auto; position: relative;}
-    .cards-area {
-      width: 100%;
-      min-height: 182px;
-      padding: 0; display: flex; flex-direction: column; align-items: center;
-      justify-content: center; z-index: 7; margin-top: 13px;
-    }
-    .cards-row {
-      display: flex; justify-content: center; align-items: center;
-      gap: 40px;
-      margin: 0;
-      width: 100%;
-      min-height: 119px;
-      z-index: 8;
-      pointer-events: none;
-    }
-    .card {
-      width: 73px; height: 105px;
-      border-radius: 13px;
-      background: #f9fafb;
-      color: #222;
-      font-size: 2.2em;
-      font-weight: 600;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      box-shadow: 0 2px 17px #22324655, 0 0 0 2px #13618927;
-      user-select: none;
-      opacity: 0;
-      transform: scale(0.68) translateY(20px) rotate(-7deg);
-      animation: dealCard 0.46s cubic-bezier(.2,.88,.38,1.17) forwards;
-      animation-delay: var(--delay, 0s);
-      border: 2.5px solid #3a7189;
-      background-image: linear-gradient(120deg, #326582 0%, #f2fafb 80%);
-      z-index: 9;
-      letter-spacing: .5px;
-      transition: background 0.2s;
-    }
-    .card > span { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; letter-spacing:.5px;}
-    .card .suit {font-size:1.11em; margin-top:2px;}
-    @keyframes dealCard {
-      0% { opacity: 0; transform: scale(0.65) translateY(20px) rotate(-7deg);}
-      70%{ opacity:1; transform: scale(1.13) translateY(-8px) rotate(7deg);}
-      100%{ opacity:1; transform: scale(1) translateY(0) rotate(0deg);}
-    }
-    .card.back {
-      background: repeating-linear-gradient(51deg, #22659c 0 13px, #fff 13px 21px);
-      color: #fff0;
-    }
-    .bet-area {
-      width: 99%;
-      display: flex; justify-content: space-evenly; align-items: flex-end;
-      margin-top: 1px; margin-bottom: 0;
-      z-index: 9;
-      position: absolute;
-      left: 0; bottom: 196px; /* Up enough for chips/buttons space */
-      pointer-events: all;
-      gap: 10px;
-    }
-    .bet-box {
-      background: #203141;
-      border-radius: 23px;
-      border: 3.2px solid #389bbb;
-      padding: 15px 6px 13px 6px;
-      min-width: 98px; max-width: 33vw;
-      text-align: center;
-      box-shadow: 0 4px 18px 3px #30adac37, 0 0 0 5px #21698e19 inset;
-      font-weight: bold; color: #e4f7f5;
-      font-size: 1.12em;
-      cursor: pointer; position: relative; z-index: 10;
-      transition: border-color 0.13s;
-      opacity: 1;
-    }
-    .bet-box.blink-hint {
-      animation: betPulse 1s infinite;
-      border-color: #49e69e !important;
-      box-shadow: 0 0 25px 5px #2da9f1bb, 0 0 0 6px #13adb649 inset;
-    }
-    .bet-box.selected {
-      border-color: #15cfee !important;
-      box-shadow: 0 0 20px 4px #13adb64c, 0 0 0 6px #13adb635 inset;
-    }
-    @keyframes betPulse {
-      0%,100% { border-color: #49e69e; box-shadow: 0 0 27px 6px #49e69ef0;}
-      58% { border-color: #e2f4f3; box-shadow: 0 0 12px 2px #e2f4f3;}
-    }
-    .bet-label { font-size: 1.18em; margin-bottom: 3.5px;}
-    .bet-amount { font-weight: bold; font-size: 1.22em; color: #d5fbfc; background: #26415baf; border-radius: 8px; padding: 2px 11px;}
-    .chips-row {
-      display: flex; justify-content: center; gap: 17px;
-      position: absolute; left: 0; width: 100%; z-index: 29;
-      bottom: 111px; /* Up so always visible above browser/keyboard */
-    }
-    .chip {
-      width: 57px; height: 57px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: bold;
-      font-size: 1.33em;
-      color: #eafafd;
-      border: 2.2px solid #fff8;
-      cursor: pointer;
-      box-shadow: 0 2px 15px #000c;
-      background: linear-gradient(145deg, #315171 23%, #38a3c8 99%);
-      outline: 2.2px solid #fff8;
-      margin-top: 2px;
-      transition: transform 0.11s, box-shadow 0.13s;
-    }
-    .chip.selected { 
-      transform: scale(1.16);
-      box-shadow: 0 0 0 6px #41e1b5b5, 0 2px 7px #cdfafc77;
-      z-index: 20;
-    }
-    .chip.chip-50k { background: linear-gradient(135deg, #224585 80%, #38a3c8 110%);}
-    .chip.chip-100k { background: linear-gradient(135deg, #38a3c8 70%, #2da9f1 120%)}
+    .main-ui { width: 100%; display: flex; flex-direction: column; align-items: center; flex: 1 1 auto; position: relative; }
+    .cards-area { width: 100%; min-height: 180px; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; margin-top: 13px;}
+    .cards-row { display: flex; justify-content: center; align-items: center; gap: 40px; margin: 0; width: 100%; min-height: 120px; z-index: 8; pointer-events: none; }
+    .card { width: 77px; height: 111px; border-radius: 15px; background: #f9fafb; color: #222; font-size: 2.6em; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 2px 17px #22324644, 0 0 0 2px #1477b220; user-select: none; opacity: 0; transform: scale(0.68) translateY(20px) rotate(-7deg); animation: dealCard 0.51s cubic-bezier(.2,.88,.38,1.17) forwards; animation-delay: var(--delay, 0s); border: 2.5px solid #3a7189; background-image: linear-gradient(120deg, #2a495a 8%, #f2fafb 90%); z-index: 9; letter-spacing: .5px; transition: background 0.14s;}
+    .card > span { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; letter-spacing:.54px; }
+    .card .suit { font-size:1.09em; margin-top:2.5px;}
+    @keyframes dealCard {  0% { opacity: 0; transform: scale(0.65) translateY(20px) rotate(-6deg);} 72%{ opacity:1; transform: scale(1.09) translateY(-7px) rotate(7deg);} 100%{ opacity:1; transform: scale(1) translateY(0) rotate(0deg);} }
+    .card.back { background: repeating-linear-gradient(51deg, #22659c 0 12px, #fff 12px 21px); color: #fff0; }
+    .bet-area { width: 99%; display: flex; justify-content: space-evenly; align-items: flex-end; margin-top: 1px; margin-bottom: 0; z-index: 10; position: absolute; left: 0; bottom: 197px; pointer-events: all; gap: 10px; }
+    .bet-box { background: #203141; border-radius: 23px; border: 3.2px solid #389bbb; padding: 16px 6px 12px 6px; min-width: 100px; max-width: 33vw; text-align: center; box-shadow: 0 4px 18px 3px #21485c24, 0 0 0 5px #21698e11 inset; font-weight: bold; color: #e4f7f5; font-size: 1.17em; cursor: pointer; position: relative; z-index: 10; transition: border-color 0.11s;}
+    .bet-box.selected { border-color: #2da9f1 !important; box-shadow: 0 0 20px 4px #13adb638, 0 0 0 6px #13adb640 inset; }
+    .bet-box.blink-hint { animation: betPulse 2.2s infinite; border-color: #39cbb9 !important; box-shadow: 0 0 23px 6px #257c9eda, 0 0 0 6px #13adb625 inset; }
+    .bet-area.pulse-guide .bet-box { animation: betPulse 2.2s infinite; }
+    @keyframes betPulse { 0%,100% { border-color: #39cbb9; box-shadow: 0 0 27px 6px #39ccb9d0;} 55% { border-color: #2da9f1; box-shadow: 0 0 10px 2px #e2f4f3; } }
+    .bet-label { font-size: 1.22em; margin-bottom: 3px;}
+    .bet-amount { font-weight: bold; font-size: 1.23em; color: #d5fbfc; background: #26415baf; border-radius: 8px; padding: 2px 11px;}
+    .chips-row { display: flex; justify-content: center; gap: 17px; position: absolute; left: 0; width: 100%; z-index: 29; bottom: 113px; }
+    .chip { width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.38em; color: #eafafd; border: 2.5px solid #fff8; cursor: pointer; box-shadow: 0 2px 15px #000c; background: linear-gradient(145deg, #30456b 23%, #41a6bf 99%); outline:2.5px solid #fff7; margin-top:2px; transition:transform 0.11s, box-shadow 0.13s;}
+    .chip.selected { transform: scale(1.18); box-shadow: 0 0 0 6px #33dbc5a7, 0 2px 7px #a7ddfc73; z-index: 20;}
+    .chip.chip-50k { background: linear-gradient(135deg, #255286 80%, #41a6bf 110%);}
+    .chip.chip-100k { background: linear-gradient(135deg, #3887b6 80%, #2da9f1 120%)}
     .chip.chip-200k { background: linear-gradient(122deg, #2da9f1 65%, #a7e9ec 120%)}
     .chip.chip-500k { background: linear-gradient(90deg, #5cdca0 120%, #2abeae 60%)}
-
-    .actions-row {
-      width: 100%;
-      display: flex; justify-content: space-evenly;
-      position: absolute;
-      left: 0; z-index: 111;
-      bottom: 37px;
-      gap: 10px;
-    }
-    .action-btn, .rebet-btn {
-      background: #2794d1;
-      color: #eafafd;
-      border: none; border-radius: 12px;
-      padding: 12px 18px;
-      font-size: 1.18em; letter-spacing:.5px;
-      cursor: pointer; font-weight: bold;
-      box-shadow: 0 2px 14px #208ca755;
-      transition: background 0.15s, transform 0.12s;
-      display: inline-block;
-      margin: 0 1px;
-    }
-    .action-btn:active, .rebet-btn:active { transform: scale(0.96);}
-    .action-btn:disabled, .rebet-btn:disabled {
-      background: #223e5a55; color: #84a3b3; cursor: not-allowed;}
-    .rebet-btn { background: #50baad; color: #192e37; min-width:55px;}
-    .rebet-btn:active { background: #38e69e; color: #2c5064; }
-    #nextHandBtn { background: #3ad5b2; color: #192e37;}
-    #nextHandBtn:active { background: #2abeae;}
-    /* --- Logical flow pulse --- */
-    .chips-row.pulse-guide .chip { animation: chipPulse 0.99s infinite; }
-    @keyframes chipPulse {
-      0%,100%{ box-shadow: 0 0 19px 4px #47cbe5, 0 0 23px 4px #2da9f165;}
-      42% { box-shadow: 0 0 42px 6px #30dbb9bb, 0 0 0 11px #36cfff22;}
-    }
-    .bet-area.pulse-guide .bet-box { animation: betPulse 1.01s infinite; }
-    .actions-row.pulse-guide #dealBtn { animation: btnGuidePulse 1.08s infinite;}
-    @keyframes btnGuidePulse {
-      0%,100% {box-shadow:0 0 0 0 #23c5a4;}
-      53% {box-shadow: 0 0 29px 10px #23c5a485;}
-    }
-    .actions-row.pulse-guide #foldBtn,
-    .actions-row.pulse-guide #playBtn { animation: btnGuidePulse 1.12s infinite;}
-
-    .result-area {
-      width: 100%; text-align: center;
-      font-size: 1.18em; font-weight: bold; letter-spacing: .8px;
-      min-height: 28px; margin: 7px 0 0 0;
-      z-index: 130; pointer-events: none; position: relative; background: none;
-      text-shadow: 0 2px 10px #2da9f122, 0 0 5px #2da9f1cc;
-    }
-    .result-area.win { color: #23c5a4; animation: winAnim 1.04s;}
-    .result-area.lose { color: #d43342; animation: loseAnim 1.06s;}
-    .result-area.push { color: #36cfff; animation: pushAnim 1.06s;}
+    .chips-row.pulse-guide .chip { animation: chipPulse 2.2s infinite; }
+    @keyframes chipPulse { 0%,100%{ box-shadow: 0 0 24px 6px #33d7bb, 0 0 29px 5px #1ed7ad4f;} 45% { box-shadow: 0 0 52px 14px #41c3be66, 0 0 0 11px #41e1b5; } }
+    .actions-row { width: 100%; display: flex; justify-content: space-evenly; position: absolute; left: 0; z-index: 130; bottom: 37px; gap: 10px;}
+    .action-btn, .rebet-btn { background: #2979b2; color: #deeefa; border: none; border-radius: 12px; padding: 12px 19px; font-size: 1.19em; letter-spacing:.5px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 14px #208ca744; transition: background 0.12s, transform 0.10s; display: inline-block; margin: 0 1px;}
+    .action-btn:active, .rebet-btn:active { transform: scale(0.965);}
+    .action-btn:disabled, .rebet-btn:disabled { background: #223e5a68; color: #b0cbe0; cursor: not-allowed; box-shadow: none;}
+    .rebet-btn { background: #439eb3; color:#eafafd; min-width:55px;}
+    .rebet-btn:active { background: #2abeae; color: #222d33; }
+    #nextHandBtn { background: #2abeae; color: #233846;}
+    #nextHandBtn:active { background: #39cbb9;}
+    .actions-row.pulse-guide #dealBtn { animation: btnGuidePulse 2.2s infinite;}
+    .actions-row.pulse-guide #playBtn,.actions-row.pulse-guide #foldBtn { animation: btnGuidePulse 2.2s infinite;}
+    @keyframes btnGuidePulse { 0%,100% {box-shadow:0 0 0 0 #23c5a4;} 57% {box-shadow: 0 0 29px 9px #29eab377;} }
+    .result-area { width: 100%; text-align: center; font-size: 1.19em; font-weight: bold; letter-spacing: .7px; min-height: 26px; margin: 7px 0 0 0; z-index: 141; pointer-events: none; position: relative; background: none; text-shadow: 0 2px 10px #2da9f122, 0 0 5px #2da9f1bb;}
+    .result-area.win { color: #23c5a4; animation: winAnim .96s;}
+    .result-area.lose { color: #d43342; animation: loseAnim 1s;}
+    .result-area.push { color: #36cfff; animation: pushAnim 1.02s;}
     @keyframes winAnim {0%{color:#fff;}60%{color:#23c5a4;}100%{color:#fff;}}
     @keyframes loseAnim {0%{color:#fff;}60%{color:#d43342;}100%{color:#fff;}}
     @keyframes pushAnim {0%{color:#fff;}60%{color:#36cfff;}100%{color:#fff;}}
-    .win-fly, .win-anim-detail {
-      position: absolute;
-      left: 50%; font-size: 1.13em; color: #23c5a4; font-weight: bold;
-      pointer-events: none; transform: translate(-50%, 0);
-      animation: flyWin 1.09s forwards; z-index: 130;
-      text-shadow: 0 2px 15px #2da9f170;
-    }
-    .win-fly { top: 23%; font-size: 1.17em; background: #26415bee;border-radius:6px;padding:3px 12px;}
-    .win-anim-detail {
-      font-size: 1em; padding:1px 8px;border-radius:9px;left:unset;right:10%;transform:none;top:8px;opacity:.87; background:#26415bcf;
-      animation: flyWin 0.84s forwards;
-    }
-    @keyframes flyWin {
-      0% { opacity: 1; transform: translateX(17px) scale(1);}
-      70% { opacity: 1; transform: translateY(-23px) scale(1.06);}
-      100% { opacity: 0; transform: translateY(-72px) scale(0.57);}
-    }
-    @media (max-width: 480px) {
-      .container { max-width: 100vw; max-height: 100vh;}
-      .cards-row { gap: 13vw;}
-      .bet-box { min-width: 24vw; }
-      .chip { width: 14vw; height: 14vw;}
-      .card { font-size: 2.1em; }
-      .action-btn, .rebet-btn { font-size: 1.08em; padding:10px 10px;}
-    }
+    .win-fly, .win-anim-detail { position: absolute; left: 50%; font-size: 1.13em; color: #23c5a4; font-weight: bold; pointer-events: none; transform: translate(-50%, 0); animation: flyWin 1s forwards; z-index: 170; text-shadow: 0 2px 15px #2da9f170; }
+    .win-fly { top: 20%; font-size: 1.16em; background: #26415bbc; border-radius:6px; padding:3px 12px;}
+    .win-anim-detail {font-size:1em; padding:1px 8px;border-radius:9px;left:unset;right:10%;transform:none;top:8px;opacity:.87; background:#26415bb4; animation: flyWin .79s forwards;}
+    @keyframes flyWin { 0% { opacity: 1; transform: translateX(15px) scale(1);} 60% { opacity: 1; transform: translateY(-19px) scale(1.07);} 100% { opacity: 0; transform: translateY(-61px) scale(0.65);} }
+    @media (max-width: 480px) { .container { max-width: 100vw; max-height: 100vh;} .cards-row { gap: 12vw;} .bet-box { min-width: 26vw; } .chip { width: 14vw; height: 14vw;} .card { font-size: 2.08em; } .action-btn,.rebet-btn { font-size: 1.08em; padding:10px 11px;} }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="branding">KakaReza</div>
     <h1>THREE CARD POKER</h1>
-    <div class="balance-area">
-      <span class="balance" id="balance">$5,000,000</span>
-      <button class="reload-btn" onclick="reloadBalance()">Reload</button>
-    </div>
+    <div class="balance-area"><span class="balance" id="balance">$5,000,000</span><button class="reload-btn" onclick="reloadBalance()">Reload</button></div>
     <div class="main-ui">
       <div class="cards-area">
         <div class="cards-row dealer" id="dealerCards"></div>
@@ -321,40 +116,30 @@
   </div>
   <script>
     // --- LOGIC AND GUIDE ---
-    const SUITS = ['♠', '♥', '♦', '♣'];
-    const RANKS = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
-    const RANK_VALUES = {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'J':11,'Q':12,'K':13,'A':14};
-    let balance = 5000000;
-    let bets = { ante: 0, pair: 0, bonus: 0 }, prevBets = { ante: 0, pair: 0, bonus: 0 };
-    let selectedChip = 50000, gameState = 'betting', playerHand = [], dealerHand = [], sixCardHand = [];
-    let pendingPayout = 0, pendingBreakdown = { ante:0, pair:0, bonus:0 };
+    const SUITS = ['♠', '♥', '♦', '♣'], RANKS = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'], RANK_VALUES = {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'J':11,'Q':12,'K':13,'A':14};
+    let balance = 5000000, bets = { ante: 0, pair: 0, bonus: 0 }, prevBets = { ante: 0, pair: 0, bonus: 0 }, selectedChip = 0, gameState = 'betting', playerHand = [], dealerHand = [], sixCardHand = [], pendingPayout = 0, pendingBreakdown = { ante:0, pair:0, bonus:0 };
 
-    // Logical guide pulse function
     function updateGuide() {
+      // Remove all logic pulses
       document.getElementById('chipsRow').classList.remove('pulse-guide');
       document.getElementById('betRowContainer').classList.remove('pulse-guide');
       document.getElementById('actionsRow').classList.remove('pulse-guide');
       if (gameState === 'betting') {
+        // Guide: 1) Chips 2) Bets 3) Deal
         if (!(bets.ante || bets.pair || bets.bonus)) {
           if (!selectedChip) document.getElementById('chipsRow').classList.add('pulse-guide');
           else document.getElementById('betRowContainer').classList.add('pulse-guide');
-        } else document.getElementById('actionsRow').classList.add('pulse-guide'); // deal
+        } else document.getElementById('actionsRow').classList.add('pulse-guide'); // only deal pulses
       } else if (gameState === 'dealt') {
-        document.getElementById('actionsRow').classList.add('pulse-guide'); // play/fold
+        document.getElementById('actionsRow').classList.add('pulse-guide'); // play/fold pulse
       }
     }
     function updateBalance(animate=false, increment=0) {
       const el = document.getElementById('balance');
       if (increment > 0) {
-        let start = balance - increment, steps = 14, curr = 0;
-        let step = Math.ceil(increment/steps);
-        let interval = setInterval(()=>{
-          curr += step;
-          if (curr >= increment) curr = increment;
-          el.textContent = '$' + (start + curr).toLocaleString();
-          if (curr >= increment) { clearInterval(interval); el.textContent = '$'+balance.toLocaleString();}
-        }, 21);
-      } else el.textContent = '$' + balance.toLocaleString();
+        let start = balance - increment, steps = 15, curr = 0, step = Math.ceil(increment/steps);
+        let interval = setInterval(()=>{ curr += step; if(curr>=increment)curr=increment; el.textContent='$'+(start+curr).toLocaleString(); if(curr>=increment){clearInterval(interval);el.textContent='$'+balance.toLocaleString();}},18);
+      } else el.textContent = '$'+balance.toLocaleString();
       if (animate) { el.classList.add('animate'); setTimeout(()=>el.classList.remove('animate'), 800);}
     }
     function updateBets() {
@@ -362,73 +147,54 @@
       document.getElementById('pairAmount').textContent = '$' + bets.pair.toLocaleString();
       document.getElementById('bonusAmount').textContent = '$' + bets.bonus.toLocaleString();
       document.getElementById('rebetBtn').disabled = !(prevBets.ante||prevBets.pair||prevBets.bonus)||(bets.ante||bets.pair||bets.bonus);
-      setTimeout(updateGuide,90);
+      setTimeout(updateGuide,80);
     }
     function selectChip(amount) {
       selectedChip = amount;
       document.querySelectorAll('.chip').forEach(chip => {
-        chip.classList.remove('selected');
-        if (chip.textContent.replace(/\$|K/g,'') == (amount/1000).toString()) chip.classList.add('selected');
+        chip.classList.toggle('selected',parseInt(chip.textContent.replace(/\$|K/g,'')+'000',10)===amount);
       });
       updateGuide();
     }
     function clearBets() {if(gameState!=='betting')return; bets={ante:0,pair:0,bonus:0}; updateBets(); resultArea(''); updateGuide();}
-    function reloadBalance() {balance=5000000;updateBalance(true);clearBets();resultArea('Balance reloaded!');updateGuide();}
-    function resultArea(text, type=''){let el=document.getElementById('resultArea');el.textContent=text;el.className='result-area'+(type?' '+type:'');}
-    function renderCards(hand, elemId, reveal=true) {
-      let el = document.getElementById(elemId); el.innerHTML = '';
-      hand.forEach((card,i)=>{
-        let cardDiv=document.createElement('div');
-        cardDiv.className='card'; cardDiv.style.setProperty('--delay',(i*0.13)+'s');
-        if(!reveal) cardDiv.classList.add('back');
-        else if(card.rank)cardDiv.innerHTML=`<span>${card.rank}</span><span class="suit" style="color:${(card.suit=='♥'||card.suit=='♦')?'#d43342':'#80ccff'}">${card.suit}</span>`;
-        el.appendChild(cardDiv);
-      });
-    }
-    function dealHand() {
+    function reloadBalance() { balance=5000000;updateBalance(true);clearBets();resultArea('Balance reloaded!');updateGuide();}
+    function resultArea(text,type=''){let el=document.getElementById('resultArea');el.textContent=text;el.className='result-area'+(type?' '+type:'');}
+    function renderCards(hand,elemId,reveal=true){let el=document.getElementById(elemId);el.innerHTML='';hand.forEach((card,i)=>{let cardDiv=document.createElement('div');cardDiv.className='card';cardDiv.style.setProperty('--delay',(i*0.13)+'s');if(!reveal)cardDiv.classList.add('back');else if(card.rank)cardDiv.innerHTML=`<span>${card.rank}</span><span class="suit" style="color:${(card.suit=='♥'||card.suit=='♦')?'#d43342':'#60a1e6'}">${card.suit}</span>`;el.appendChild(cardDiv);});}
+    function dealHand(){
       if(gameState!=='betting')return;
-      if(!(bets.ante||bets.pair||bets.bonus)){
-        resultArea('Place a bet to start.');pulseBetBox('anteBox');pulseBetBox('pairBox');pulseBetBox('bonusBox');updateGuide();return;}
-      prevBets={...bets}; updateBets();
+      if(!(bets.ante||bets.pair||bets.bonus)){resultArea('Place a bet to start.');pulseBetBox('anteBox');pulseBetBox('pairBox');pulseBetBox('bonusBox');updateGuide();return;}
+      prevBets={...bets};updateBets();
       let deck=[];for(let s of SUITS)for(let r of RANKS)deck.push({rank:r,suit:s});
       for(let i=deck.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
-      playerHand=deck.slice(0,3); dealerHand=deck.slice(3,6); sixCardHand=playerHand.concat(dealerHand);
-      renderCards(dealerHand.map(()=>({})), 'dealerCards', false); renderCards(playerHand, 'playerCards', true);
-      gameState='dealt'; enableActions(true); showNextHandButton(false);
-      document.getElementById('foldBtn').disabled = false; document.getElementById('playBtn').disabled = false;
-      document.getElementById('dealBtn').disabled=true; document.getElementById('clearBtn').disabled=true;document.getElementById('rebetBtn').disabled=true;
-      resultArea('Choose: Play or Fold?'); updateGuide();
+      playerHand=deck.slice(0,3);dealerHand=deck.slice(3,6);sixCardHand=playerHand.concat(dealerHand);
+      renderCards(dealerHand.map(()=>({})), 'dealerCards', false);renderCards(playerHand, 'playerCards', true);
+      gameState='dealt';enableActions(true);showNextHandButton(false);
+      document.getElementById('foldBtn').disabled=false;document.getElementById('playBtn').disabled=false;
+      document.getElementById('dealBtn').disabled=true;document.getElementById('clearBtn').disabled=true;document.getElementById('rebetBtn').disabled=true;
+      resultArea('Choose: Play or Fold?');updateGuide();
     }
-    function enableActions(enable) {
-      document.getElementById('foldBtn').disabled=!enable; document.getElementById('playBtn').disabled=!enable;
-      document.getElementById('dealBtn').disabled=!enable; document.getElementById('clearBtn').disabled=!enable;
+    function enableActions(enable){
+      document.getElementById('foldBtn').disabled=!enable;
+      document.getElementById('playBtn').disabled=!enable;
+      document.getElementById('dealBtn').disabled=!enable;
+      document.getElementById('clearBtn').disabled=!enable;
       document.getElementById('rebetBtn').disabled=!enable;
     }
-    function foldHand() {
-      if (gameState !== 'dealt') return;
-      renderCards(dealerHand, 'dealerCards', true); showNextHandButton(true);
-      animateWinBreakdown({total: 0, ante: 0, pair: 0, bonus: 0});
-      announceMsg('You folded.', 0, 'lose');
-      pendingPayout = 0; pendingBreakdown = { ante:0,pair:0,bonus:0 };
-      endHand(); updateGuide();
-    }
-    function playHand() {
-      if (gameState !== 'dealt') return;
-      renderCards(dealerHand, 'dealerCards', true);
+    function foldHand(){if(gameState!=='dealt')return;renderCards(dealerHand,'dealerCards',true);showNextHandButton(true);animateWinBreakdown({total:0,ante:0,pair:0,bonus:0});announceMsg('You folded.',0,'lose');pendingPayout=0;pendingBreakdown={ante:0,pair:0,bonus:0};endHand();updateGuide();}
+    function playHand(){
+      if(gameState!=='dealt')return;renderCards(dealerHand,'dealerCards',true);
       let ante=bets.ante,pair=bets.pair,bonus=bets.bonus,payout=0,anteWin=0,pairWin=0,bonusWin=0,winType='';
-      let dealerQualifies=handValue(dealerHand).high>=12;let playerVal=handValue(playerHand),dealerVal=handValue(dealerHand);
-      if(!dealerQualifies){anteWin=ante;winType="push";payout+=ante;}
-      else if(compareHands(playerHand,dealerHand)>0){anteWin=ante*2;payout+=ante*2;winType="win";}
-      else if(compareHands(playerHand,dealerHand)===0){anteWin=ante;payout+=ante;winType="push";}
-      else{winType="lose";}
+      let dealerQualifies=handValue(dealerHand).high>=12,playerVal=handValue(playerHand),dealerVal=handValue(dealerHand);
+      if(!dealerQualifies){anteWin=ante;winType='push';payout+=ante;}
+      else if(compareHands(playerHand,dealerHand)>0){anteWin=ante*2;payout+=ante*2;winType='win';}
+      else if(compareHands(playerHand,dealerHand)===0){anteWin=ante;payout+=ante;winType='push';}
+      else{winType='lose';}
       pairWin=pairPlusPayout(playerHand,pair);bonusWin=sixCardBonusPayout(sixCardHand,bonus);let anteBonus=anteBonusPayout(playerHand,ante);
-      payout+=pairWin+bonusWin+anteBonus;if(anteBonus)anteWin+=anteBonus;
-      pendingPayout=payout;pendingBreakdown={ante:anteWin,pair:pairWin,bonus:bonusWin};
+      payout+=pairWin+bonusWin+anteBonus;if(anteBonus)anteWin+=anteBonus;pendingPayout=payout;pendingBreakdown={ante:anteWin,pair:pairWin,bonus:bonusWin};
       animateWinBreakdown({total:payout,ante:anteWin,pair:pairWin,bonus:bonusWin});showNextHandButton(true);
-      if(payout>0)announceMsg("You win $"+payout.toLocaleString()+"!",payout,"win");
-      else if(winType==="push")announceMsg("Push. Ante returned.",ante,"push");
-      else announceMsg("You lose.",0,"lose");
-      endHand(true);updateGuide();
+      if(payout>0)announceMsg('You win $'+payout.toLocaleString()+'!',payout,'win');
+      else if(winType==='push')announceMsg('Push. Ante returned.',ante,'push');
+      else announceMsg('You lose.',0,'lose');endHand(true);updateGuide();
     }
     function showNextHandButton(show){
       document.getElementById('nextHandBtn').style.display=show?'inline-block':'none';
@@ -438,59 +204,26 @@
       document.getElementById('clearBtn').style.display=show?'none':'inline-block';
       document.getElementById('rebetBtn').style.display=show?'none':'inline-block';
     }
-    function resetGame() {
-      if(pendingPayout>0){balance+=pendingPayout;updateBalance(true,pendingPayout);}
-      pendingPayout=0;pendingBreakdown={ante:0,pair:0,bonus:0};gameState='betting';
-      bets={ante:0,pair:0,bonus:0};updateBets();renderCards([], 'playerCards');renderCards([], 'dealerCards');
-      enableActions(true);document.getElementById('foldBtn').disabled=true;document.getElementById('playBtn').disabled=true;
-      document.getElementById('dealBtn').disabled=false;document.getElementById('clearBtn').disabled=false;
-      document.getElementById('rebetBtn').disabled=!(prevBets.ante||prevBets.pair||prevBets.bonus);resultArea('');showNextHandButton(false);updateGuide();
-    }
-    function announceMsg(msg,amount,type){let el=document.getElementById('resultArea');el.textContent=msg;el.className='result-area'+(type?' '+type:'');
-      if(amount>0){let fly=document.createElement('div');fly.className='win-fly';fly.textContent='+$'+amount.toLocaleString();document.querySelector('.container').appendChild(fly);setTimeout(()=>fly.remove(),1100);}
-    }
-    function animateWinBreakdown(breakdown) {
-      animateBreakInd('anteBox',breakdown.ante,"#21e6c1","Ante +" + (breakdown.ante));
-      animateBreakInd('pairBox',breakdown.pair,"#36cfff","Pair+ +" + (breakdown.pair));
-      animateBreakInd('bonusBox',breakdown.bonus,"#49e69e","6Card +" + (breakdown.bonus));
-    }
-    function animateBreakInd(boxId,amt,color,txt){
-      if(!amt)return;
-      let box=document.getElementById(boxId),d=document.createElement('div');
-      d.className='win-anim-detail';d.style.background=color+"22";d.style.color=color;d.textContent=txt.replace("+0","");
-      box.appendChild(d);setTimeout(()=>d.remove(),910);}
-    function pulseBetBox(id){let e=document.getElementById(id);e.classList.add('blink-hint');setTimeout(()=>e.classList.remove('blink-hint'),900);}
+    function resetGame(){if(pendingPayout>0){balance+=pendingPayout;updateBalance(true,pendingPayout);}pendingPayout=0;pendingBreakdown={ante:0,pair:0,bonus:0};gameState='betting';bets={ante:0,pair:0,bonus:0};updateBets();renderCards([], 'playerCards');renderCards([], 'dealerCards');enableActions(true);document.getElementById('foldBtn').disabled=true;document.getElementById('playBtn').disabled=true;document.getElementById('dealBtn').disabled=false;document.getElementById('clearBtn').disabled=false;document.getElementById('rebetBtn').disabled=!(prevBets.ante||prevBets.pair||prevBets.bonus);resultArea('');showNextHandButton(false);updateGuide();}
+    function announceMsg(msg,amount,type){let el=document.getElementById('resultArea');el.textContent=msg;el.className='result-area'+(type?' '+type:'');if(amount>0){let fly=document.createElement('div');fly.className='win-fly';fly.textContent='+$'+amount.toLocaleString();document.querySelector('.container').appendChild(fly);setTimeout(()=>fly.remove(),1010);}}
+    function animateWinBreakdown(breakdown){animateBreakInd('anteBox',breakdown.ante,"#21e6c1","Ante +" + (breakdown.ante));animateBreakInd('pairBox',breakdown.pair,"#36cfff","Pair+ +" + (breakdown.pair));animateBreakInd('bonusBox',breakdown.bonus,"#49e69e","6Card +" + (breakdown.bonus));}
+    function animateBreakInd(boxId,amt,color,txt){if(!amt)return;let box=document.getElementById(boxId),d=document.createElement('div');d.className='win-anim-detail';d.style.background=color+"22";d.style.color=color;d.textContent=txt.replace("+0","");box.appendChild(d);setTimeout(()=>d.remove(),790);}
+    function pulseBetBox(id){let e=document.getElementById(id);e.classList.add('blink-hint');setTimeout(()=>e.classList.remove('blink-hint'),1200);}
     function endHand(waitForNextHand){enableActions(false);if(!waitForNextHand)setTimeout(()=>resetGame(),940);}
-    document.querySelectorAll('.bet-box').forEach((box,idx)=>{
-      box.onclick=()=>{if(gameState!=='betting')return;let key=idx===0?'ante':(idx===1?'pair':'bonus');
-        if(balance>=selectedChip){bets[key]+=selectedChip;balance-=selectedChip;updateBets();updateBalance();box.classList.add('selected');setTimeout(()=>box.classList.remove('selected'),150);updateGuide();}
-        else{resultArea('Insufficient balance!','lose');}
-      };});
-    function rebetPrev() {
-      if(gameState!=='betting')return;
-      if(!(prevBets.ante||prevBets.pair||prevBets.bonus))return;
-      if(balance<prevBets.ante+prevBets.pair+prevBets.bonus){resultArea('Insufficient balance!','lose');return;}
-      bets={...prevBets};balance-=(bets.ante+bets.pair+bets.bonus);updateBets();updateBalance();updateGuide();}
-    selectChip(50000);
+    document.querySelectorAll('.bet-box').forEach((box,idx)=>{box.onclick=()=>{if(gameState!=='betting')return;let key=idx===0?'ante':(idx===1?'pair':'bonus');if(balance>=selectedChip){bets[key]+=selectedChip;balance-=selectedChip;updateBets();updateBalance();box.classList.add('selected');setTimeout(()=>box.classList.remove('selected'),140);updateGuide();}else{resultArea('Insufficient balance!','lose');}};});
+    function rebetPrev(){if(gameState!=='betting')return;if(!(prevBets.ante||prevBets.pair||prevBets.bonus))return;if(balance<prevBets.ante+prevBets.pair+prevBets.bonus){resultArea('Insufficient balance!','lose');return;}bets={...prevBets};balance-=(bets.ante+bets.pair+bets.bonus);updateBets();updateBalance();updateGuide();}
+    // No chip is selected at start, so chips pulse first!
     // --- Poker hand evaluation
-    function handValue(hand){
-      let vals=hand.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);
-      let suits=hand.map(c=>c.suit),isFlush=suits[0]===suits[1]&&suits[1]===suits[2];
-      let isStraight=(vals[2]-vals[0]===2&&vals[0]+1===vals[1])||(vals[0]===2&&vals[1]===3&&vals[2]===14);
-      let counts={};hand.forEach(c=>counts[c.rank]=(counts[c.rank]||0)+1);let trips=Object.values(counts).includes(3),pair=Object.values(counts).includes(2);
-      if(isStraight&&isFlush)return{rank:6,high:vals[2]};if(trips)return{rank:5,high:vals[2]};if(isFlush)return{rank:4,high:vals[2]};
-      if(isStraight)return{rank:3,high:vals[2]};if(pair)return{rank:2,high:vals[2]};return{rank:1,high:vals[2]};}
-    function compareHands(h1,h2){let v1=handValue(h1),v2=handValue(h2);if(v1.rank!==v2.rank)return v1.rank-v2.rank;if(v1.high!==v2.high)return v1.high-v2.high;
-      let vals1=h1.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a),vals2=h2.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a);for(let i=0;i<3;i++)if(vals1[i]!==vals2[i])return vals1[i]-vals2[i];return 0;}
-    function pairPlusPayout(h,b){if(b===0)return 0;let v=handValue(h);if(v.rank===6)return b*40;if(v.rank===5)return b*30;if(v.rank===4)return b*4;if(v.rank===3)return b*6;if(v.rank===2)return b*1;return 0;}
-    function sixCardBonusPayout(h,b){if(b===0)return 0;let vals=h.map(c=>RANK_VALUES[c.rank]),suits=h.map(c=>c.suit),counts={};vals.forEach(v=>counts[v]=(counts[v]||0)+1);let freq=Object.values(counts).sort((a,b)=>b-a);
-      if(isSixCardRoyalFlush(h))return b*1000;if(isSixCardStraightFlush(h))return b*200;if(freq[0]===4)return b*50;if(freq[0]===3&&freq[1]===2)return b*20;if(isSixCardFlush(h))return b*15;if(isSixCardStraight(h))return b*10;if(freq[0]===3)return b*5;return 0;}
-    function isSixCardRoyalFlush(h){for(let s of SUITS){let needed=['10','J','Q','K','A'],found=h.filter(c=>c.suit===s&&needed.includes(c.rank)).map(c=>c.rank);if(needed.every(r=>found.includes(r)))return true;}return false;}
-    function isSixCardStraightFlush(h){for(let s of SUITS){let suited=h.filter(c=>c.suit===s).map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);for(let i=0;i<=suited.length-5;i++){if(suited[i+4]-suited[i]===4)return true;}}return false;}
-    function isSixCardFlush(h){for(let s of SUITS)if(h.filter(c=>c.suit===s).length>=5)return true;return false;}
-    function isSixCardStraight(h){let vals=[...new Set(h.map(c=>RANK_VALUES[c.rank]))].sort((a,b)=>a-b);for(let i=0;i<=vals.length-5;i++)if(vals[i+4]-vals[i]===4)return true;return false;}
-    function anteBonusPayout(h,b){let v=handValue(h);if(v.rank===6)return b*5;if(v.rank===3)return b*1;if(v.rank===5)return b*4;return 0;}
-    // Initial logical pulse:
+    function handValue(hand){let vals=hand.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);let suits=hand.map(c=>c.suit),isFlush=suits[0]===suits[1]&&suits[1]===suits[2];let isStraight=(vals[2]-vals[0]===2&&vals[0]+1===vals[1])||(vals[0]===2&&vals[1]===3&&vals[2]===14);let counts={};hand.forEach(c=>counts[c.rank]=(counts[c.rank]||0)+1);let trips=Object.values(counts).includes(3),pair=Object.values(counts).includes(2);if(isStraight&&isFlush)return{rank:6,high:vals[2]};if(trips)return{rank:5,high:vals[2]};if(isFlush)return{rank:4,high:vals[2]};if(isStraight)return{rank:3,high:vals[2]};if(pair)return{rank:2,high:vals[2]};return{rank:1,high:vals[2]};}
+    function compareHands(h1,h2){let v1=handValue(h1),v2=handValue(h2);if(v1.rank!==v2.rank)return v1.rank-v2.rank;if(v1.high!==v2.high)return v1.high-v2.high;let vals1=h1.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a),vals2=h2.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a);for(let i=0;i<3;i++)if(vals1[i]!==vals2[i])return vals1[i]-vals2[i];return 0;}
+    function pairPlusPayout(hand,bet){if(!bet)return 0;let v=handValue(hand);if(v.rank===6)return bet*40;if(v.rank===5)return bet*30;if(v.rank===4)return bet*4;if(v.rank===3)return bet*6;if(v.rank===2)return bet*1;return 0;}
+    function sixCardBonusPayout(hand,bet){if(!bet)return 0;let vals=hand.map(c=>RANK_VALUES[c.rank]),suits=hand.map(c=>c.suit),counts={};vals.forEach(v=>counts[v]=(counts[v]||0)+1);let freq=Object.values(counts).sort((a,b)=>b-a);if(isSixCardRoyalFlush(hand))return bet*1000;if(isSixCardStraightFlush(hand))return bet*200;if(freq[0]===4)return bet*50;if(freq[0]===3&&freq[1]===2)return bet*20;if(isSixCardFlush(hand))return bet*15;if(isSixCardStraight(hand))return bet*10;if(freq[0]===3)return bet*5;return 0;}
+    function isSixCardRoyalFlush(hand){for(let s of SUITS){let needed=['10','J','Q','K','A'],found=hand.filter(c=>c.suit===s&&needed.includes(c.rank)).map(c=>c.rank);if(needed.every(r=>found.includes(r)))return true;}return false;}
+    function isSixCardStraightFlush(hand){for(let s of SUITS){let suited=hand.filter(c=>c.suit===s).map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);for(let i=0;i<=suited.length-5;i++){if(suited[i+4]-suited[i]===4)return true;}}return false;}
+    function isSixCardFlush(hand){for(let s of SUITS)if(hand.filter(c=>c.suit===s).length>=5)return true;return false;}
+    function isSixCardStraight(hand){let vals=[...new Set(hand.map(c=>RANK_VALUES[c.rank]))].sort((a,b)=>a-b);for(let i=0;i<=vals.length-5;i++)if(vals[i+4]-vals[i]===4)return true;return false;}
+    function anteBonusPayout(hand,bet){let v=handValue(hand);if(v.rank===6)return bet*5;if(v.rank===3)return bet*1;if(v.rank===5)return bet*4;return 0;}
+    // First pulse: chips
     setTimeout(updateGuide,100);
   </script>
 </body>
