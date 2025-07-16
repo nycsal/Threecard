@@ -6,294 +6,281 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      width: 100vw; height: 100vh;
-      min-width: 100vw; min-height: 100vh;
+      margin: 0; padding: 0;
+      height: 100vh; width: 100vw;
+      background: linear-gradient(135deg, #233246 80%, #294d56 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
       overflow: hidden;
-      background: linear-gradient(135deg, #22324a, #20b7ad 90%);
-      user-select: none;
+      touch-action: manipulation;
     }
     body {
-      width: 100vw; height: 100vh;
       display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; min-width: 100vw;
     }
     .container {
-      width: 100vw; height: 100vh;
-      max-width: 440px; min-width: 320px;
-      background: linear-gradient(135deg,#16263a 70%,#37f2d8 150%);
-      position: fixed; top: 0; left: 0;
-      box-shadow: 0 2px 30px #000c;
-      display: flex; flex-direction: column; align-items: center;
-      overflow: hidden; z-index: 2;
+      width: 100vw; max-width: 430px;
+      height: 100vh; max-height: 870px;
+      background: linear-gradient(120deg, #233246 82%, #294d56 110%);
+      box-shadow: 0 3px 32px #000B, 0 0 0 4px #243e5722;
+      border-radius: 0;
+      display: flex; flex-direction: column;
+      align-items: center; overflow: hidden; position: relative;
     }
     .branding {
-      margin-top: 15px;
-      margin-bottom: 6px;
-      font-size: 1.15em;
-      font-weight: bold;
-      color: #fff;
-      background: #1ed7ad;
-      padding: 4px 18px 6px 18px;
-      border-radius: 13px;
-      letter-spacing: 2px;
-      box-shadow: 0 0 8px 2px #1ed7ad8e;
+      margin-top: 12px; margin-bottom: 4px;
+      font-size: 1.18em;
+      letter-spacing: 2px; font-weight: bold;
+      color: #fff; background: #2979b2;
+      padding: 5px 18px 6px 18px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px 2px #22739bcf;
+      text-align: center; opacity: .95;
     }
     h1 {
-      margin: 4px 0 3px 0;
-      font-size: 2em;
-      letter-spacing: 2.5px;
-      color: #f8fafd;
-      text-shadow: 0 3px 16px #1ed7ad22, 0 0 2px #1ed7ad;
-      text-align: center;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-weight: bold;
+      margin: 2px 0 2px 0;
+      font-size: 2.06em;
+      letter-spacing: 2.2px;
+      color: #e7f5ff; font-weight: bold;
+      text-shadow: 0 2px 14px #29618950;
     }
     .balance-area {
-      width: 93%;
+      width: 94%; min-height: 36px;
       display: flex; justify-content: space-between; align-items: center;
-      background: linear-gradient(90deg, #22e3bbcc, #16263abb 90%);
+      background: linear-gradient(90deg, #22435acc, #233246bb 90%);
       border-radius: 13px;
-      margin-bottom: 5px;
-      padding: 8px 16px 7px 13px;
-      box-shadow: 0 2px 6px 0 #12c1bb2a;
-      font-size: 1.08em;
+      margin-bottom: 3px;
+      padding: 8px 16px 7px 14px;
+      box-shadow: 0 2px 6px #1935512a;
+      font-size: 1.11em;
     }
     .balance {
-      font-size: 1.15em;
-      font-weight: bold;
-      color: #fff;
-      background: #195653f9;
-      padding: 4px 17px 4px 18px;
+      font-size: 1.18em;
+      font-weight: bold; color: #f7fcff;
+      background: #24495b;
+      padding: 4px 17px;
       border-radius: 10px;
-      border: 1.5px solid #36f8e0a0;
-      box-shadow: 0 0 6px #36f8e031;
-      transition: background 0.2s, color 0.2s, transform 0.2s;
+      border: 1.5px solid #369fc6a0;
+      box-shadow: 0 0 6px #2e90a431;
+      transition: background 0.15s, color 0.18s, transform 0.13s;
     }
     .balance.animate {
-      color: #fff; background: #30dfc1;
-      animation: bankPulse 0.7s;
-      transform: scale(1.09);
+      color: #fff;
+      background: #53baad;
+      animation: bankPulse 0.69s;
+      transform: scale(1.10);
     }
     @keyframes bankPulse {
-      0% { background: #195653f9; color: #fff;}
-      60% { background: #30dfc1; color: #07342e;}
-      100% {background: #195653f9; color: #fff;}
+      0% { background: #24495b; color: #f7fcff;}
+      70% { background: #53baad; color: #213a49;}
+      100% {background: #24495b; color: #f7fcff;}
     }
     .reload-btn {
-      background: #2da9f1;
-      color: #fff;
-      border: none; border-radius: 9px;
-      padding: 7px 17px;
+      background: #2979b2;
+      color: #f6fcff;
+      border: none; border-radius: 8px;
+      padding: 7px 15px 6px 15px;
       font-size: 1em; font-weight: bold;
       transition: background 0.12s;
-      box-shadow: 0 2px 8px #2da9f144;
+      box-shadow: 0 2px 8px #2a648d33;
       cursor: pointer;
     }
-    .reload-btn:hover { background: #17f7e1; color: #15314e;}
-    .main-ui {
-      width: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-start;
-      flex: 1 1 auto;
-      position: relative;
-    }
+    .reload-btn:hover { background: #38a3c8; color: #243e57;}
+    .main-ui { width: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start; flex: 1 1 auto; position: relative;}
     .cards-area {
       width: 100%;
-      padding: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-      z-index: 3;
-      min-height: 178px;
-      margin-top: 13px;
+      min-height: 182px;
+      padding: 0; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; z-index: 7; margin-top: 13px;
     }
     .cards-row {
       display: flex; justify-content: center; align-items: center;
-      gap: 37px;
+      gap: 40px;
       margin: 0;
       width: 100%;
-      min-height: 112px;
-      z-index: 5;
+      min-height: 119px;
+      z-index: 8;
       pointer-events: none;
     }
     .card {
-      width: 64px; height: 93px;
+      width: 73px; height: 105px;
       border-radius: 13px;
-      background: #fff;
+      background: #f9fafb;
       color: #222;
-      font-size: 1.22em;
-      font-weight: bold;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 14px #000b, 0 0 0 2px #0dfafecf;
+      font-size: 2.2em;
+      font-weight: 600;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 2px 17px #22324655, 0 0 0 2px #13618927;
       user-select: none;
       opacity: 0;
-      transform: scale(0.60) translateY(22px) rotate(-7deg);
-      animation: dealCard 0.44s cubic-bezier(.16,.91,.42,1.13) forwards;
+      transform: scale(0.68) translateY(20px) rotate(-7deg);
+      animation: dealCard 0.46s cubic-bezier(.2,.88,.38,1.17) forwards;
       animation-delay: var(--delay, 0s);
-      border: 2px solid #21e6c1;
-      background-image: linear-gradient(135deg, #c7f8f7 18%, #fff 99%);
+      border: 2.5px solid #3a7189;
+      background-image: linear-gradient(120deg, #326582 0%, #f2fafb 80%);
       z-index: 9;
+      letter-spacing: .5px;
+      transition: background 0.2s;
     }
+    .card > span { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; letter-spacing:.5px;}
+    .card .suit {font-size:1.11em; margin-top:2px;}
     @keyframes dealCard {
-      0% { opacity: 0; transform: scale(0.60) translateY(22px) rotate(-7deg);}
-      62%{ opacity:1; transform: scale(1.11) translateY(-7px) rotate(9deg);}
+      0% { opacity: 0; transform: scale(0.65) translateY(20px) rotate(-7deg);}
+      70%{ opacity:1; transform: scale(1.13) translateY(-8px) rotate(7deg);}
       100%{ opacity:1; transform: scale(1) translateY(0) rotate(0deg);}
     }
     .card.back {
-      background: repeating-linear-gradient(51deg, #32c8cc 0 12px, #fff 13px 19px);
+      background: repeating-linear-gradient(51deg, #22659c 0 13px, #fff 13px 21px);
       color: #fff0;
     }
     .bet-area {
       width: 99%;
       display: flex; justify-content: space-evenly; align-items: flex-end;
-      margin-top: 1px; margin-bottom: 3px;
-      z-index: 18;
+      margin-top: 1px; margin-bottom: 0;
+      z-index: 9;
       position: absolute;
-      left: 0; bottom: 220px;
+      left: 0; bottom: 196px; /* Up enough for chips/buttons space */
       pointer-events: all;
-      gap: 11px;
+      gap: 10px;
     }
     .bet-box {
-      background: #0f222d;
-      border-radius: 20px;
-      padding: 14px 3px 10px 3px;
-      min-width: 83px; max-width: 33vw;
+      background: #203141;
+      border-radius: 23px;
+      border: 3.2px solid #389bbb;
+      padding: 15px 6px 13px 6px;
+      min-width: 98px; max-width: 33vw;
       text-align: center;
-      box-shadow: 0 1px 15px 4px #37f2d84d, 0 0 0 6px #17f7e119 inset;
-      margin: 0 2px;
-      border: 3.2px solid #1ed7adcc;
-      font-weight: bold; color: #eafafd;
-      font-size: 1.09em;
-      cursor: pointer; position: relative; z-index: 22;
-      transition: border-color 0.15s;
+      box-shadow: 0 4px 18px 3px #30adac37, 0 0 0 5px #21698e19 inset;
+      font-weight: bold; color: #e4f7f5;
+      font-size: 1.12em;
+      cursor: pointer; position: relative; z-index: 10;
+      transition: border-color 0.13s;
       opacity: 1;
     }
     .bet-box.blink-hint {
-      animation: betPulse 1.01s infinite;
-      border-color: #2da9f1 !important;
-      box-shadow: 0 0 15px 6px #2da9f1bb, 0 0 0 5px #13adb64c inset;
+      animation: betPulse 1s infinite;
+      border-color: #49e69e !important;
+      box-shadow: 0 0 25px 5px #2da9f1bb, 0 0 0 6px #13adb649 inset;
     }
     .bet-box.selected {
-      border-color: #76fae1 !important;
-      box-shadow: 0 0 14px 7px #24aed1a2, 0 0 0 6px #13adb655 inset;
+      border-color: #15cfee !important;
+      box-shadow: 0 0 20px 4px #13adb64c, 0 0 0 6px #13adb635 inset;
     }
     @keyframes betPulse {
-      0%,100% { border-color: #2da9f1; box-shadow: 0 0 20px 7px #2da9f1bb;}
-      58% { border-color: #eafafd; box-shadow: 0 0 8px 2px #caf0fd;}
+      0%,100% { border-color: #49e69e; box-shadow: 0 0 27px 6px #49e69ef0;}
+      58% { border-color: #e2f4f3; box-shadow: 0 0 12px 2px #e2f4f3;}
     }
-    .bet-label { font-size: 1.09em; margin-bottom: 3px;}
-    .bet-amount { font-weight: bold; font-size: 1.14em; color: #eafafd; background: #193d4da5; border-radius: 8px; padding: 2px 8px; margin-top:1px;}
+    .bet-label { font-size: 1.18em; margin-bottom: 3.5px;}
+    .bet-amount { font-weight: bold; font-size: 1.22em; color: #d5fbfc; background: #26415baf; border-radius: 8px; padding: 2px 11px;}
     .chips-row {
-      display: flex;
-      justify-content: center;
-      gap: 13px;
-      position: absolute;
-      left: 0; width: 100%;
-      z-index: 59;
-      bottom: 113px;
-      /* 2" above bottom on most devices, raises above bar */
+      display: flex; justify-content: center; gap: 17px;
+      position: absolute; left: 0; width: 100%; z-index: 29;
+      bottom: 111px; /* Up so always visible above browser/keyboard */
     }
     .chip {
-      width: 50px; height: 50px;
+      width: 57px; height: 57px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-weight: bold; font-size: 1.12em;
+      font-weight: bold;
+      font-size: 1.33em;
       color: #eafafd;
-      border: 2.5px solid #fff8;
+      border: 2.2px solid #fff8;
       cursor: pointer;
-      box-shadow: 0 2px 15px #000a;
-      background: linear-gradient(135deg, #c7f8f7 10%, #41e1b5 110%);
-      outline: 2.5px solid #fff8;
+      box-shadow: 0 2px 15px #000c;
+      background: linear-gradient(145deg, #315171 23%, #38a3c8 99%);
+      outline: 2.2px solid #fff8;
       margin-top: 2px;
-      transition: transform 0.16s, box-shadow 0.11s;
+      transition: transform 0.11s, box-shadow 0.13s;
     }
     .chip.selected { 
-      transform: scale(1.15);
-      box-shadow: 0 0 0 5px #41e1b5b5, 0 2px 7px #cdfafcab;
-      z-index: 16;
+      transform: scale(1.16);
+      box-shadow: 0 0 0 6px #41e1b5b5, 0 2px 7px #cdfafc77;
+      z-index: 20;
     }
-    .chip.chip-50k { background: linear-gradient(135deg, #3c5ca9 80%, #41e1b5 110%);}
-    .chip.chip-100k { background: linear-gradient(135deg, #36cfff 80%, #2da9f1 120%)}
-    .chip.chip-200k { background: linear-gradient(135deg, #93f5ec 65%, #f386a1 130%)}
-    .chip.chip-500k { background: linear-gradient(90deg, #f386a1 120%, #2cb7a9 80%)}
+    .chip.chip-50k { background: linear-gradient(135deg, #224585 80%, #38a3c8 110%);}
+    .chip.chip-100k { background: linear-gradient(135deg, #38a3c8 70%, #2da9f1 120%)}
+    .chip.chip-200k { background: linear-gradient(122deg, #2da9f1 65%, #a7e9ec 120%)}
+    .chip.chip-500k { background: linear-gradient(90deg, #5cdca0 120%, #2abeae 60%)}
+
     .actions-row {
       width: 100%;
-      display: flex; justify-content: space-evenly; gap: 9px;
+      display: flex; justify-content: space-evenly;
       position: absolute;
-      bottom: 44px; /* also up about 2" */
-      left: 0; z-index: 99;
-      padding-bottom: 6px;
+      left: 0; z-index: 111;
+      bottom: 37px;
+      gap: 10px;
     }
     .action-btn, .rebet-btn {
-      background: #2da9f1;
-      color: #16263a;
+      background: #2794d1;
+      color: #eafafd;
       border: none; border-radius: 12px;
-      padding: 10px 15px;
-      font-size: 1.12em;
+      padding: 12px 18px;
+      font-size: 1.18em; letter-spacing:.5px;
       cursor: pointer; font-weight: bold;
-      box-shadow: 0 2px 13px #2da9f133;
-      margin: 0 1px;
-      transition: background 0.11s, transform 0.11s;
+      box-shadow: 0 2px 14px #208ca755;
+      transition: background 0.15s, transform 0.12s;
       display: inline-block;
+      margin: 0 1px;
     }
-    .action-btn:active, .rebet-btn:active { transform: scale(0.97);}
+    .action-btn:active, .rebet-btn:active { transform: scale(0.96);}
     .action-btn:disabled, .rebet-btn:disabled {
-      background: #1580862a; color: #9fdbe7;
-      cursor: not-allowed;
-    }
-    .rebet-btn      { background: #21e6c1; color:#16313a; min-width:50px;}
-    .rebet-btn:active { background: #49e69e; color:#253c44;}
-    #nextHandBtn { background:#41e1b5; color: #1b242f;}
-    #nextHandBtn:active { background:#21e6c1;}
-    /* Guided PULSE for logical flow */
-    .chips-row.pulse-guide .chip { animation: chipPulse 0.88s infinite; }
+      background: #223e5a55; color: #84a3b3; cursor: not-allowed;}
+    .rebet-btn { background: #50baad; color: #192e37; min-width:55px;}
+    .rebet-btn:active { background: #38e69e; color: #2c5064; }
+    #nextHandBtn { background: #3ad5b2; color: #192e37;}
+    #nextHandBtn:active { background: #2abeae;}
+    /* --- Logical flow pulse --- */
+    .chips-row.pulse-guide .chip { animation: chipPulse 0.99s infinite; }
     @keyframes chipPulse {
-      0%,100%{ box-shadow: 0 0 13px 1px #36cfff, 0 0 8px 0 #41e1b5; }
-      40% { box-shadow: 0 0 30px 7px #40e0d0da, 0 0 0 7px #36cfff33;}
+      0%,100%{ box-shadow: 0 0 19px 4px #47cbe5, 0 0 23px 4px #2da9f165;}
+      42% { box-shadow: 0 0 42px 6px #30dbb9bb, 0 0 0 11px #36cfff22;}
     }
-    .bet-area.pulse-guide .bet-box { animation: betPulse 1s infinite; }
-    .actions-row.pulse-guide #dealBtn { animation: btnGuidePulse 1.06s infinite; }
+    .bet-area.pulse-guide .bet-box { animation: betPulse 1.01s infinite; }
+    .actions-row.pulse-guide #dealBtn { animation: btnGuidePulse 1.08s infinite;}
     @keyframes btnGuidePulse {
-      0%,100% { box-shadow: 0 0 0 0 #24aed1; }
-      50% { box-shadow: 0 0 18px 6px #36cfff44; }
+      0%,100% {box-shadow:0 0 0 0 #23c5a4;}
+      53% {box-shadow: 0 0 29px 10px #23c5a485;}
     }
-    .actions-row.pulse-guide #playBtn,
-    .actions-row.pulse-guide #foldBtn { animation: btnGuidePulse 1.14s infinite;}
+    .actions-row.pulse-guide #foldBtn,
+    .actions-row.pulse-guide #playBtn { animation: btnGuidePulse 1.12s infinite;}
+
     .result-area {
       width: 100%; text-align: center;
-      font-size: 1.14em; font-weight: bold; letter-spacing: 1px;
-      min-height: 26px; margin: 5px 0 0 0;
-      z-index: 111; pointer-events: none; position: relative; background: none;
-      text-shadow: 0 2px 7px #36cfff30, 0 0 5px #39e1bc92;
+      font-size: 1.18em; font-weight: bold; letter-spacing: .8px;
+      min-height: 28px; margin: 7px 0 0 0;
+      z-index: 130; pointer-events: none; position: relative; background: none;
+      text-shadow: 0 2px 10px #2da9f122, 0 0 5px #2da9f1cc;
     }
-    .result-area.win { color: #24e677; animation: winAnim 1.04s;}
-    .result-area.lose { color: #e67774; animation: loseAnim 1.06s;}
+    .result-area.win { color: #23c5a4; animation: winAnim 1.04s;}
+    .result-area.lose { color: #d43342; animation: loseAnim 1.06s;}
     .result-area.push { color: #36cfff; animation: pushAnim 1.06s;}
-    @keyframes winAnim {0%{color:#fff;}60%{color:#24e677;}100%{color:#fff;}}
-    @keyframes loseAnim {0%{color:#fff;}60%{color:#e67774;}100%{color:#fff;}}
+    @keyframes winAnim {0%{color:#fff;}60%{color:#23c5a4;}100%{color:#fff;}}
+    @keyframes loseAnim {0%{color:#fff;}60%{color:#d43342;}100%{color:#fff;}}
     @keyframes pushAnim {0%{color:#fff;}60%{color:#36cfff;}100%{color:#fff;}}
     .win-fly, .win-anim-detail {
       position: absolute;
-      left: 50%; font-size: 1.08em; color: #24e677; font-weight: bold;
+      left: 50%; font-size: 1.13em; color: #23c5a4; font-weight: bold;
       pointer-events: none; transform: translate(-50%, 0);
-      animation: flyWin 1.14s forwards; z-index: 120;
-      text-shadow: 0 2px 11px #2ce99e86;
+      animation: flyWin 1.09s forwards; z-index: 130;
+      text-shadow: 0 2px 15px #2da9f170;
     }
-    .win-fly { top: 23%; font-size: 1.15em; letter-spacing: 1.6px; background: #011e1855; border-radius: 7px; padding: 3px 10px;}
-    .win-anim-detail {font-size:.95em; padding:0.2px 5px; border-radius:8px; min-width:41px;
-      left:unset; right:13%; transform:none; top:6px; opacity:.84; background:#011e1844; animation: flyWin 0.83s forwards;}
+    .win-fly { top: 23%; font-size: 1.17em; background: #26415bee;border-radius:6px;padding:3px 12px;}
+    .win-anim-detail {
+      font-size: 1em; padding:1px 8px;border-radius:9px;left:unset;right:10%;transform:none;top:8px;opacity:.87; background:#26415bcf;
+      animation: flyWin 0.84s forwards;
+    }
     @keyframes flyWin {
-      0% { opacity: 1; transform: translateX(15px) scale(1);}
-      78% { opacity: 1; transform: translateY(-26px) scale(1.06);}
+      0% { opacity: 1; transform: translateX(17px) scale(1);}
+      70% { opacity: 1; transform: translateY(-23px) scale(1.06);}
       100% { opacity: 0; transform: translateY(-72px) scale(0.57);}
     }
     @media (max-width: 480px) {
       .container { max-width: 100vw; max-height: 100vh;}
       .cards-row { gap: 13vw;}
-      .bet-box { min-width: 22vw; }
-      .chip { width: 13vw; height: 13vw;}
+      .bet-box { min-width: 24vw; }
+      .chip { width: 14vw; height: 14vw;}
+      .card { font-size: 2.1em; }
+      .action-btn, .rebet-btn { font-size: 1.08em; padding:10px 10px;}
     }
   </style>
 </head>
@@ -311,18 +298,9 @@
         <div class="cards-row player" id="playerCards"></div>
       </div>
       <div class="bet-area" id="betRowContainer">
-        <div class="bet-box" id="anteBox">
-          <div class="bet-label">Ante</div>
-          <div class="bet-amount" id="anteAmount">$0</div>
-        </div>
-        <div class="bet-box" id="pairBox">
-          <div class="bet-label">Pair Plus</div>
-          <div class="bet-amount" id="pairAmount">$0</div>
-        </div>
-        <div class="bet-box" id="bonusBox">
-          <div class="bet-label">6 Card Bonus</div>
-          <div class="bet-amount" id="bonusAmount">$0</div>
-        </div>
+        <div class="bet-box" id="anteBox"><div class="bet-label">Ante</div><div class="bet-amount" id="anteAmount">$0</div></div>
+        <div class="bet-box" id="pairBox"><div class="bet-label">Pair Plus</div><div class="bet-amount" id="pairAmount">$0</div></div>
+        <div class="bet-box" id="bonusBox"><div class="bet-label">6 Card Bonus</div><div class="bet-amount" id="bonusAmount">$0</div></div>
       </div>
       <div class="result-area" id="resultArea"></div>
       <div class="chips-row" id="chipsRow">
@@ -342,84 +320,49 @@
     </div>
   </div>
   <script>
-    // --- LOGIC ---
+    // --- LOGIC AND GUIDE ---
     const SUITS = ['♠', '♥', '♦', '♣'];
     const RANKS = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
     const RANK_VALUES = {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'J':11,'Q':12,'K':13,'A':14};
     let balance = 5000000;
-    let bets = { ante: 0, pair: 0, bonus: 0 };
-    let prevBets = { ante: 0, pair: 0, bonus: 0 };
-    let selectedChip = 50000;
-    let gameState = 'betting';
-    let playerHand = [];
-    let dealerHand = [];
-    let sixCardHand = [];
-    let pendingPayout = 0;
-    let pendingBreakdown = { ante:0, pair:0, bonus:0 };
-    // --- UI PULSE GUIDE (chips, then bet, then deal, then play/fold) ---
-    let guideStep = 0;
+    let bets = { ante: 0, pair: 0, bonus: 0 }, prevBets = { ante: 0, pair: 0, bonus: 0 };
+    let selectedChip = 50000, gameState = 'betting', playerHand = [], dealerHand = [], sixCardHand = [];
+    let pendingPayout = 0, pendingBreakdown = { ante:0, pair:0, bonus:0 };
+
+    // Logical guide pulse function
     function updateGuide() {
-      // Clear all pulses
       document.getElementById('chipsRow').classList.remove('pulse-guide');
       document.getElementById('betRowContainer').classList.remove('pulse-guide');
       document.getElementById('actionsRow').classList.remove('pulse-guide');
-      if(gameState==="betting") {
-        if(!(bets.ante||bets.pair||bets.bonus)) {
-          // If no bet, if chip not picked yet or just cleared, pulse chips; else pulse bets
-          if (!selectedChip) {
-            document.getElementById('chipsRow').classList.add('pulse-guide');
-          } else {
-            document.getElementById('betRowContainer').classList.add('pulse-guide');
-          }
-        } else {
-          // At least one bet, pulse deal button only
-          document.getElementById('actionsRow').classList.add('pulse-guide');
-        }
-      } else if(gameState=="dealt") {
-        // Play/Fold buttons only
-        document.getElementById('actionsRow').classList.add('pulse-guide');
+      if (gameState === 'betting') {
+        if (!(bets.ante || bets.pair || bets.bonus)) {
+          if (!selectedChip) document.getElementById('chipsRow').classList.add('pulse-guide');
+          else document.getElementById('betRowContainer').classList.add('pulse-guide');
+        } else document.getElementById('actionsRow').classList.add('pulse-guide'); // deal
+      } else if (gameState === 'dealt') {
+        document.getElementById('actionsRow').classList.add('pulse-guide'); // play/fold
       }
     }
-    // Update pulses at key moments:
-    function showNextHandButton(show){
-      document.getElementById('nextHandBtn').style.display = show?'inline-block':'none';
-      document.getElementById('dealBtn').style.display = show?'none':'inline-block';
-      document.getElementById('foldBtn').style.display = show?'none':'inline-block';
-      document.getElementById('playBtn').style.display = show?'none':'inline-block';
-      document.getElementById('clearBtn').style.display = show?'none':'inline-block';
-      document.getElementById('rebetBtn').style.display = show?'none':'inline-block';
-    }
-    function resetGuideOnState() {setTimeout(updateGuide,200);}
     function updateBalance(animate=false, increment=0) {
       const el = document.getElementById('balance');
       if (increment > 0) {
-        let start = balance - increment, steps = 16, curr = 0;
+        let start = balance - increment, steps = 14, curr = 0;
         let step = Math.ceil(increment/steps);
         let interval = setInterval(()=>{
           curr += step;
           if (curr >= increment) curr = increment;
           el.textContent = '$' + (start + curr).toLocaleString();
-          if (curr >= increment) {
-            clearInterval(interval);
-            el.textContent = '$' + balance.toLocaleString();
-          }
-        }, 20);
-      } else {
-        el.textContent = '$' + balance.toLocaleString();
-      }
-      if (animate) {
-        el.classList.add('animate');
-        setTimeout(()=>el.classList.remove('animate'), 800);
-      }
+          if (curr >= increment) { clearInterval(interval); el.textContent = '$'+balance.toLocaleString();}
+        }, 21);
+      } else el.textContent = '$' + balance.toLocaleString();
+      if (animate) { el.classList.add('animate'); setTimeout(()=>el.classList.remove('animate'), 800);}
     }
     function updateBets() {
       document.getElementById('anteAmount').textContent = '$' + bets.ante.toLocaleString();
       document.getElementById('pairAmount').textContent = '$' + bets.pair.toLocaleString();
       document.getElementById('bonusAmount').textContent = '$' + bets.bonus.toLocaleString();
-      document.getElementById('rebetBtn').disabled = !(
-        prevBets.ante || prevBets.pair || prevBets.bonus
-      ) || (bets.ante || bets.pair || bets.bonus);
-      resetGuideOnState();
+      document.getElementById('rebetBtn').disabled = !(prevBets.ante||prevBets.pair||prevBets.bonus)||(bets.ante||bets.pair||bets.bonus);
+      setTimeout(updateGuide,90);
     }
     function selectChip(amount) {
       selectedChip = amount;
@@ -429,274 +372,126 @@
       });
       updateGuide();
     }
-    function clearBets() {
-      if (gameState !== 'betting') return;
-      bets = { ante: 0, pair: 0, bonus: 0 };
-      updateBets();
-      resultArea('');
-      updateGuide();
-    }
-    function reloadBalance() {
-      balance = 5000000;
-      updateBalance(true);
-      clearBets();
-      resultArea('Balance reloaded!');
-      updateGuide();
-    }
-    function resultArea(text, type='') {
-      let el = document.getElementById('resultArea');
-      el.textContent = text;
-      el.className = 'result-area' + (type ? ' '+type : '');
-    }
+    function clearBets() {if(gameState!=='betting')return; bets={ante:0,pair:0,bonus:0}; updateBets(); resultArea(''); updateGuide();}
+    function reloadBalance() {balance=5000000;updateBalance(true);clearBets();resultArea('Balance reloaded!');updateGuide();}
+    function resultArea(text, type=''){let el=document.getElementById('resultArea');el.textContent=text;el.className='result-area'+(type?' '+type:'');}
     function renderCards(hand, elemId, reveal=true) {
-      let el = document.getElementById(elemId);
-      el.innerHTML = '';
-      hand.forEach((card,i) => {
-        let cardDiv = document.createElement('div');
-        cardDiv.className = 'card';
-        cardDiv.style.setProperty('--delay', (i*0.12)+'s');
-        if (!reveal) cardDiv.classList.add('back');
-        else if (card.rank) {
-          cardDiv.innerHTML = `<span>${card.rank}</span><span style="font-size:1.2em;color:${(card.suit=='♥'||card.suit=='♦')?'#e67774':'#bafcf8'}">${card.suit}</span>`;
-        }
+      let el = document.getElementById(elemId); el.innerHTML = '';
+      hand.forEach((card,i)=>{
+        let cardDiv=document.createElement('div');
+        cardDiv.className='card'; cardDiv.style.setProperty('--delay',(i*0.13)+'s');
+        if(!reveal) cardDiv.classList.add('back');
+        else if(card.rank)cardDiv.innerHTML=`<span>${card.rank}</span><span class="suit" style="color:${(card.suit=='♥'||card.suit=='♦')?'#d43342':'#80ccff'}">${card.suit}</span>`;
         el.appendChild(cardDiv);
       });
     }
     function dealHand() {
-      if (gameState !== 'betting') return;
-      if (!(bets.ante || bets.pair || bets.bonus)) {
-        resultArea('Place a bet to start.');
-        pulseBetBox('anteBox'); pulseBetBox('pairBox'); pulseBetBox('bonusBox');
-        updateGuide();
-        return;
-      }
-      prevBets = {...bets};
-      updateBets();
-      let deck = [];
-      for (let s of SUITS) for (let r of RANKS) deck.push({rank:r, suit:s});
-      for (let i=deck.length-1; i>0; i--) {
-        let j = Math.floor(Math.random()*(i+1));
-        [deck[i], deck[j]] = [deck[j], deck[i]];
-      }
-      playerHand = deck.slice(0,3);
-      dealerHand = deck.slice(3,6);
-      sixCardHand = playerHand.concat(dealerHand);
-      renderCards(dealerHand.map(()=>({})), 'dealerCards', false);
-      renderCards(playerHand, 'playerCards', true);
-      gameState = 'dealt';
-      enableActions(true);
-      showNextHandButton(false);
-      document.getElementById('foldBtn').disabled = false;
-      document.getElementById('playBtn').disabled = false;
-      document.getElementById('dealBtn').disabled = true;
-      document.getElementById('clearBtn').disabled = true;
-      document.getElementById('rebetBtn').disabled = true;
-      resultArea('Choose: Play or Fold?');
-      updateGuide();
+      if(gameState!=='betting')return;
+      if(!(bets.ante||bets.pair||bets.bonus)){
+        resultArea('Place a bet to start.');pulseBetBox('anteBox');pulseBetBox('pairBox');pulseBetBox('bonusBox');updateGuide();return;}
+      prevBets={...bets}; updateBets();
+      let deck=[];for(let s of SUITS)for(let r of RANKS)deck.push({rank:r,suit:s});
+      for(let i=deck.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+      playerHand=deck.slice(0,3); dealerHand=deck.slice(3,6); sixCardHand=playerHand.concat(dealerHand);
+      renderCards(dealerHand.map(()=>({})), 'dealerCards', false); renderCards(playerHand, 'playerCards', true);
+      gameState='dealt'; enableActions(true); showNextHandButton(false);
+      document.getElementById('foldBtn').disabled = false; document.getElementById('playBtn').disabled = false;
+      document.getElementById('dealBtn').disabled=true; document.getElementById('clearBtn').disabled=true;document.getElementById('rebetBtn').disabled=true;
+      resultArea('Choose: Play or Fold?'); updateGuide();
     }
     function enableActions(enable) {
-      document.getElementById('foldBtn').disabled = !enable;
-      document.getElementById('playBtn').disabled = !enable;
-      document.getElementById('dealBtn').disabled = !enable;
-      document.getElementById('clearBtn').disabled = !enable;
-      document.getElementById('rebetBtn').disabled = !enable;
+      document.getElementById('foldBtn').disabled=!enable; document.getElementById('playBtn').disabled=!enable;
+      document.getElementById('dealBtn').disabled=!enable; document.getElementById('clearBtn').disabled=!enable;
+      document.getElementById('rebetBtn').disabled=!enable;
     }
     function foldHand() {
       if (gameState !== 'dealt') return;
-      renderCards(dealerHand, 'dealerCards', true);
-      showNextHandButton(true);
+      renderCards(dealerHand, 'dealerCards', true); showNextHandButton(true);
       animateWinBreakdown({total: 0, ante: 0, pair: 0, bonus: 0});
       announceMsg('You folded.', 0, 'lose');
-      pendingPayout = 0; pendingBreakdown = { ante:0, pair:0, bonus:0 };
-      endHand();
-      updateGuide();
+      pendingPayout = 0; pendingBreakdown = { ante:0,pair:0,bonus:0 };
+      endHand(); updateGuide();
     }
     function playHand() {
       if (gameState !== 'dealt') return;
       renderCards(dealerHand, 'dealerCards', true);
-      let ante = bets.ante, pair = bets.pair, bonus = bets.bonus;
-      let payout = 0, anteWin=0, pairWin=0, bonusWin=0, winType='';
-      let dealerQualifies = handValue(dealerHand).high >= 12;
-      let playerVal = handValue(playerHand), dealerVal = handValue(dealerHand);
-      if (!dealerQualifies) { anteWin=ante; winType="push"; payout+=ante; }
-      else if (compareHands(playerHand, dealerHand) > 0) { anteWin=ante*2; payout+=ante*2; winType="win"; }
-      else if (compareHands(playerHand, dealerHand)===0) { anteWin=ante; payout+=ante; winType="push"; }
-      else { winType="lose"; }
-      pairWin=pairPlusPayout(playerHand, pair);
-      bonusWin=sixCardBonusPayout(sixCardHand, bonus);
-      let anteBonus=anteBonusPayout(playerHand, ante);
-      payout+=pairWin+bonusWin+anteBonus;
-      if(anteBonus) anteWin+=anteBonus;
-      pendingPayout = payout;
-      pendingBreakdown = { ante: anteWin, pair: pairWin, bonus: bonusWin };
-      animateWinBreakdown({total:payout, ante: anteWin, pair: pairWin, bonus: bonusWin});
-      showNextHandButton(true);
-      if (payout > 0) announceMsg("You win $" + payout.toLocaleString()+"!", payout, "win");
-      else if (winType==="push") announceMsg("Push. Ante returned.", ante, "push");
-      else announceMsg("You lose.", 0, "lose");
-      endHand(true);
-      updateGuide();
+      let ante=bets.ante,pair=bets.pair,bonus=bets.bonus,payout=0,anteWin=0,pairWin=0,bonusWin=0,winType='';
+      let dealerQualifies=handValue(dealerHand).high>=12;let playerVal=handValue(playerHand),dealerVal=handValue(dealerHand);
+      if(!dealerQualifies){anteWin=ante;winType="push";payout+=ante;}
+      else if(compareHands(playerHand,dealerHand)>0){anteWin=ante*2;payout+=ante*2;winType="win";}
+      else if(compareHands(playerHand,dealerHand)===0){anteWin=ante;payout+=ante;winType="push";}
+      else{winType="lose";}
+      pairWin=pairPlusPayout(playerHand,pair);bonusWin=sixCardBonusPayout(sixCardHand,bonus);let anteBonus=anteBonusPayout(playerHand,ante);
+      payout+=pairWin+bonusWin+anteBonus;if(anteBonus)anteWin+=anteBonus;
+      pendingPayout=payout;pendingBreakdown={ante:anteWin,pair:pairWin,bonus:bonusWin};
+      animateWinBreakdown({total:payout,ante:anteWin,pair:pairWin,bonus:bonusWin});showNextHandButton(true);
+      if(payout>0)announceMsg("You win $"+payout.toLocaleString()+"!",payout,"win");
+      else if(winType==="push")announceMsg("Push. Ante returned.",ante,"push");
+      else announceMsg("You lose.",0,"lose");
+      endHand(true);updateGuide();
     }
-    function announceMsg(msg, amount, type) {
-      let el = document.getElementById('resultArea');
-      el.textContent = msg;
-      el.className = 'result-area' + (type ? ' '+type : '');
-      if (amount > 0) {
-        let fly = document.createElement('div');
-        fly.className = 'win-fly';
-        fly.textContent = '+$'+amount.toLocaleString();
-        document.querySelector('.container').appendChild(fly);
-        setTimeout(()=>fly.remove(), 1200);
-      }
+    function showNextHandButton(show){
+      document.getElementById('nextHandBtn').style.display=show?'inline-block':'none';
+      document.getElementById('dealBtn').style.display=show?'none':'inline-block';
+      document.getElementById('foldBtn').style.display=show?'none':'inline-block';
+      document.getElementById('playBtn').style.display=show?'none':'inline-block';
+      document.getElementById('clearBtn').style.display=show?'none':'inline-block';
+      document.getElementById('rebetBtn').style.display=show?'none':'inline-block';
+    }
+    function resetGame() {
+      if(pendingPayout>0){balance+=pendingPayout;updateBalance(true,pendingPayout);}
+      pendingPayout=0;pendingBreakdown={ante:0,pair:0,bonus:0};gameState='betting';
+      bets={ante:0,pair:0,bonus:0};updateBets();renderCards([], 'playerCards');renderCards([], 'dealerCards');
+      enableActions(true);document.getElementById('foldBtn').disabled=true;document.getElementById('playBtn').disabled=true;
+      document.getElementById('dealBtn').disabled=false;document.getElementById('clearBtn').disabled=false;
+      document.getElementById('rebetBtn').disabled=!(prevBets.ante||prevBets.pair||prevBets.bonus);resultArea('');showNextHandButton(false);updateGuide();
+    }
+    function announceMsg(msg,amount,type){let el=document.getElementById('resultArea');el.textContent=msg;el.className='result-area'+(type?' '+type:'');
+      if(amount>0){let fly=document.createElement('div');fly.className='win-fly';fly.textContent='+$'+amount.toLocaleString();document.querySelector('.container').appendChild(fly);setTimeout(()=>fly.remove(),1100);}
     }
     function animateWinBreakdown(breakdown) {
-      animateBreakInd('anteBox', breakdown.ante, "#21e6c1", "Ante +" + (breakdown.ante));
-      animateBreakInd('pairBox', breakdown.pair, "#36cfff", "Pair+ +" + (breakdown.pair));
-      animateBreakInd('bonusBox', breakdown.bonus, "#fd446d", "6Card +" + (breakdown.bonus));
+      animateBreakInd('anteBox',breakdown.ante,"#21e6c1","Ante +" + (breakdown.ante));
+      animateBreakInd('pairBox',breakdown.pair,"#36cfff","Pair+ +" + (breakdown.pair));
+      animateBreakInd('bonusBox',breakdown.bonus,"#49e69e","6Card +" + (breakdown.bonus));
     }
-    function animateBreakInd(boxId, amt, color, txt) {
-      if (!amt) return;
-      let box = document.getElementById(boxId);
-      let d = document.createElement('div');
-      d.className = 'win-anim-detail';
-      d.style.background = color+"33";
-      d.style.color = color;
-      d.textContent = txt.replace("+0","");
-      box.appendChild(d);
-      setTimeout(()=>d.remove(), 1010);
-    }
-    function pulseBetBox(id) {
-      var elem=document.getElementById(id);
-      elem.classList.add('blink-hint');
-      setTimeout(()=>elem.classList.remove('blink-hint'), 1100);
-    }
-    function endHand(waitForNextHand) {
-      enableActions(false);
-      if (!waitForNextHand) setTimeout(()=>resetGame(), 1140);
-    }
-    document.querySelectorAll('.bet-box').forEach((box, idx) => {
-      box.onclick = () => {
-        if (gameState !== 'betting') return;
-        let key = idx === 0 ? 'ante' : (idx === 1 ? 'pair' : 'bonus');
-        if (balance >= selectedChip) {
-          bets[key] += selectedChip;
-          balance -= selectedChip;
-          updateBets();
-          updateBalance();
-          box.classList.add('selected');
-          setTimeout(()=>box.classList.remove('selected'), 160);
-          updateGuide();
-        } else { resultArea('Insufficient balance!', 'lose'); }
-      };
-    });
+    function animateBreakInd(boxId,amt,color,txt){
+      if(!amt)return;
+      let box=document.getElementById(boxId),d=document.createElement('div');
+      d.className='win-anim-detail';d.style.background=color+"22";d.style.color=color;d.textContent=txt.replace("+0","");
+      box.appendChild(d);setTimeout(()=>d.remove(),910);}
+    function pulseBetBox(id){let e=document.getElementById(id);e.classList.add('blink-hint');setTimeout(()=>e.classList.remove('blink-hint'),900);}
+    function endHand(waitForNextHand){enableActions(false);if(!waitForNextHand)setTimeout(()=>resetGame(),940);}
+    document.querySelectorAll('.bet-box').forEach((box,idx)=>{
+      box.onclick=()=>{if(gameState!=='betting')return;let key=idx===0?'ante':(idx===1?'pair':'bonus');
+        if(balance>=selectedChip){bets[key]+=selectedChip;balance-=selectedChip;updateBets();updateBalance();box.classList.add('selected');setTimeout(()=>box.classList.remove('selected'),150);updateGuide();}
+        else{resultArea('Insufficient balance!','lose');}
+      };});
     function rebetPrev() {
-      if (gameState !== 'betting') return;
-      if (!(prevBets.ante || prevBets.pair || prevBets.bonus)) return;
-      if (balance < prevBets.ante + prevBets.pair + prevBets.bonus) {
-        resultArea('Insufficient balance!', 'lose');
-        return;
-      }
-      bets = { ...prevBets };
-      balance -= (bets.ante + bets.pair + bets.bonus);
-      updateBets(); updateBalance(); updateGuide();
-    }
+      if(gameState!=='betting')return;
+      if(!(prevBets.ante||prevBets.pair||prevBets.bonus))return;
+      if(balance<prevBets.ante+prevBets.pair+prevBets.bonus){resultArea('Insufficient balance!','lose');return;}
+      bets={...prevBets};balance-=(bets.ante+bets.pair+bets.bonus);updateBets();updateBalance();updateGuide();}
     selectChip(50000);
-    function handValue(hand) {
-      let vals = hand.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);
-      let suits = hand.map(c=>c.suit);
-      let isFlush = suits[0]===suits[1] && suits[1]===suits[2];
-      let isStraight = (vals[2]-vals[0]===2 && vals[0]+1===vals[1]) || (vals[0]===2 && vals[1]===3 && vals[2]===14);
-      let counts = {};
-      hand.forEach(c=>counts[c.rank]=(counts[c.rank]||0)+1);
-      let trips = Object.values(counts).includes(3);
-      let pair = Object.values(counts).includes(2);
-      if (isStraight && isFlush) return {rank:6, high:vals[2]};
-      if (trips) return {rank:5, high:vals[2]};
-      if (isFlush) return {rank:4, high:vals[2]};
-      if (isStraight) return {rank:3, high:vals[2]};
-      if (pair) return {rank:2, high:vals[2]};
-      return {rank:1, high:vals[2]};
-    }
-    function compareHands(h1, h2) {
-      let v1 = handValue(h1), v2 = handValue(h2);
-      if (v1.rank !== v2.rank) return v1.rank - v2.rank;
-      if (v1.high !== v2.high) return v1.high - v2.high;
-      let vals1 = h1.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a);
-      let vals2 = h2.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a);
-      for (let i=0; i<3; i++) {
-        if (vals1[i] !== vals2[i]) return vals1[i]-vals2[i];
-      }
-      return 0;
-    }
-    function pairPlusPayout(hand, bet) {
-      if (bet === 0) return 0;
-      let val = handValue(hand);
-      if (val.rank === 6) return bet * 40;
-      if (val.rank === 5) return bet * 30;
-      if (val.rank === 4) return bet * 4;
-      if (val.rank === 3) return bet * 6;
-      if (val.rank === 2) return bet * 1;
-      return 0;
-    }
-    function sixCardBonusPayout(hand, bet) {
-      if (bet === 0) return 0;
-      let vals = hand.map(c=>RANK_VALUES[c.rank]);
-      let suits = hand.map(c=>c.suit);
-      let counts = {};
-      vals.forEach(v=>counts[v]=(counts[v]||0)+1);
-      let freq = Object.values(counts).sort((a,b)=>b-a);
-      if (isSixCardRoyalFlush(hand)) return bet * 1000;
-      if (isSixCardStraightFlush(hand)) return bet * 200;
-      if (freq[0] === 4) return bet * 50;
-      if (freq[0] === 3 && freq[1] === 2) return bet * 20;
-      if (isSixCardFlush(hand)) return bet * 15;
-      if (isSixCardStraight(hand)) return bet * 10;
-      if (freq[0] === 3) return bet * 5;
-      return 0;
-    }
-    function isSixCardRoyalFlush(hand) {
-      for (let s of SUITS) {
-        let needed = ['10','J','Q','K','A'];
-        let found = hand.filter(c=>c.suit===s && needed.includes(c.rank)).map(c=>c.rank);
-        if (needed.every(r=>found.includes(r))) return true;
-      }
-      return false;
-    }
-    function isSixCardStraightFlush(hand) {
-      for (let s of SUITS) {
-        let suited = hand.filter(c=>c.suit===s).map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);
-        for (let i=0; i<=suited.length-5; i++) {
-          if (suited[i+4]-suited[i]===4) return true;
-        }
-      }
-      return false;
-    }
-    function isSixCardFlush(hand) {
-      for (let s of SUITS)
-        if (hand.filter(c=>c.suit===s).length>=5) return true;
-      return false;
-    }
-    function isSixCardStraight(hand) {
-      let vals = [...new Set(hand.map(c=>RANK_VALUES[c.rank]))].sort((a,b)=>a-b);
-      for (let i=0; i<=vals.length-5; i++)
-        if (vals[i+4]-vals[i]===4) return true;
-      return false;
-    }
-    function anteBonusPayout(hand, bet) {
-      let val = handValue(hand);
-      if (val.rank === 6) return bet * 5;
-      if (val.rank === 3) return bet * 1;
-      if (val.rank === 5) return bet * 4;
-      return 0;
-    }
-    // Responsive fix window
-    window.addEventListener('resize', fixLayout);
-    function fixLayout() {
-      document.querySelector('.container').style.height = window.innerHeight+'px';
-      document.querySelector('.container').style.width = window.innerWidth+'px';
-    }
-    fixLayout();
-    updateGuide();
+    // --- Poker hand evaluation
+    function handValue(hand){
+      let vals=hand.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);
+      let suits=hand.map(c=>c.suit),isFlush=suits[0]===suits[1]&&suits[1]===suits[2];
+      let isStraight=(vals[2]-vals[0]===2&&vals[0]+1===vals[1])||(vals[0]===2&&vals[1]===3&&vals[2]===14);
+      let counts={};hand.forEach(c=>counts[c.rank]=(counts[c.rank]||0)+1);let trips=Object.values(counts).includes(3),pair=Object.values(counts).includes(2);
+      if(isStraight&&isFlush)return{rank:6,high:vals[2]};if(trips)return{rank:5,high:vals[2]};if(isFlush)return{rank:4,high:vals[2]};
+      if(isStraight)return{rank:3,high:vals[2]};if(pair)return{rank:2,high:vals[2]};return{rank:1,high:vals[2]};}
+    function compareHands(h1,h2){let v1=handValue(h1),v2=handValue(h2);if(v1.rank!==v2.rank)return v1.rank-v2.rank;if(v1.high!==v2.high)return v1.high-v2.high;
+      let vals1=h1.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a),vals2=h2.map(c=>RANK_VALUES[c.rank]).sort((a,b)=>b-a);for(let i=0;i<3;i++)if(vals1[i]!==vals2[i])return vals1[i]-vals2[i];return 0;}
+    function pairPlusPayout(h,b){if(b===0)return 0;let v=handValue(h);if(v.rank===6)return b*40;if(v.rank===5)return b*30;if(v.rank===4)return b*4;if(v.rank===3)return b*6;if(v.rank===2)return b*1;return 0;}
+    function sixCardBonusPayout(h,b){if(b===0)return 0;let vals=h.map(c=>RANK_VALUES[c.rank]),suits=h.map(c=>c.suit),counts={};vals.forEach(v=>counts[v]=(counts[v]||0)+1);let freq=Object.values(counts).sort((a,b)=>b-a);
+      if(isSixCardRoyalFlush(h))return b*1000;if(isSixCardStraightFlush(h))return b*200;if(freq[0]===4)return b*50;if(freq[0]===3&&freq[1]===2)return b*20;if(isSixCardFlush(h))return b*15;if(isSixCardStraight(h))return b*10;if(freq[0]===3)return b*5;return 0;}
+    function isSixCardRoyalFlush(h){for(let s of SUITS){let needed=['10','J','Q','K','A'],found=h.filter(c=>c.suit===s&&needed.includes(c.rank)).map(c=>c.rank);if(needed.every(r=>found.includes(r)))return true;}return false;}
+    function isSixCardStraightFlush(h){for(let s of SUITS){let suited=h.filter(c=>c.suit===s).map(c=>RANK_VALUES[c.rank]).sort((a,b)=>a-b);for(let i=0;i<=suited.length-5;i++){if(suited[i+4]-suited[i]===4)return true;}}return false;}
+    function isSixCardFlush(h){for(let s of SUITS)if(h.filter(c=>c.suit===s).length>=5)return true;return false;}
+    function isSixCardStraight(h){let vals=[...new Set(h.map(c=>RANK_VALUES[c.rank]))].sort((a,b)=>a-b);for(let i=0;i<=vals.length-5;i++)if(vals[i+4]-vals[i]===4)return true;return false;}
+    function anteBonusPayout(h,b){let v=handValue(h);if(v.rank===6)return b*5;if(v.rank===3)return b*1;if(v.rank===5)return b*4;return 0;}
+    // Initial logical pulse:
+    setTimeout(updateGuide,100);
   </script>
 </body>
 </html>
