@@ -3,69 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <title>KakaReza – Three Card Poker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, viewport-fit=cover">
   <style>
     html, body {
-      margin: 0; padding: 0; width: 100vw; height: 100vh; background: #212b37; overflow: hidden;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      min-width: 100vw; min-height: 100vh;
+      background: #192133;
+      overflow: hidden !important;
+      touch-action: none;
     }
     body {
-      width: 100vw; height: 100vh; min-width: 100vw; min-height: 100vh;
+      width: 100vw; height: 100vh;
+      min-width: 100vw; min-height: 100vh;
+      position: fixed; left: 0; top: 0; right: 0; bottom: 0;
+      overflow: hidden !important;
       display: flex; align-items: center; justify-content: center;
     }
     .container {
-      width: 100vw; max-width: 430px; height: 100vh; max-height: 852px; min-height: 510px;
+      width: 100vw; max-width: 430px;
+      height: 100vh; max-height: 852px; min-height: 510px;
       display: flex; flex-direction: column; align-items: center;
-      background: linear-gradient(120deg, #232c3a 77%, #315b70 120%);
-      box-shadow: 0 6px 32px #000d;
-      position: relative; overflow: hidden;
+      background: linear-gradient(120deg, #1a2240 60%, #204d83 110%);
+      box-shadow: 0 6px 32px #000a;
+      position: fixed; left: 0; top: 0;
+      overflow: hidden;
     }
-    .branding { margin-top: 13px; font-size: 1.18em; font-weight: bold; color: #fff; background: #ffaa4d; border-radius: 13px; padding: 8px 26px 8px 26px; letter-spacing: 2px; margin-bottom: 5px; }
-    h1 { margin: 2px 0 6px 0; font-size: 2.1em; color: #fff8e4; font-weight: bold; text-shadow: 0 2px 12px #ffb56e58; }
-    .balance-area { width: 92%; min-height: 36px; display: flex; justify-content: space-between; align-items: center;
-      background: linear-gradient(90deg,#ffcc8855 5%, #342f27cc 90%);
-      border-radius: 14px; margin-bottom: 10px; padding: 8px 16px 7px 14px; font-size: 1.13em;
+    .branding { margin-top: 13px; font-size: 1.18em; font-weight: bold; color: #fff;
+      background: linear-gradient(90deg,#ffaa4d 65%, #498bdb 120%);
+      border-radius: 18px; padding: 9px 28px 9px 28px; letter-spacing: 2px; margin-bottom: 8px;
+      box-shadow: 0 0 12px #ffaa4d72;
     }
-    .balance { font-size:1.19em;font-weight:bold; color:#fff8e7; background:#32343c; padding:6px 19px; border-radius:13px; border:1.9px solid #ffab37a1; }
-    .reload-btn { background: #ffaa4d; color:#343235; border: none; border-radius: 8px; padding: 8px 18px;
-      font-size: 1em; font-weight: bold; cursor: pointer; transition: background 0.12s; box-shadow: 0 2px 8px #cb9d65;
+    h1 { margin: 2px 0 7px 0; font-size: 2.13em; color: #fff8e4;
+      font-weight: bold; text-shadow: 0 2px 10px #ffb56eb6; letter-spacing: 1.7px;}
+    .balance-area {
+      width: 92%; min-height: 36px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: linear-gradient(90deg,#358dc5 9%, #fbaa3a 98%);
+      border-radius: 14px; margin-bottom: 8px; padding: 8px 16px 8px 14px; font-size: 1.13em;
+      box-shadow: 0 3px 18px #18446ead;
     }
-    .reload-btn:hover { background: #ffc477; color: #512e0a;}
+    .balance { font-size:1.19em;font-weight:bold; color:#0b1523; background:#ffcc8855; padding:7px 19px; border-radius:13px; border:1.9px solid #00154333; }
+    .reload-btn { background: linear-gradient(90deg,#298be8 60%,#ffbc4b 98%); color:#15172a; border: none; border-radius: 8px; padding: 9px 19px;
+      font-size: 1em; font-weight: bold; cursor: pointer; transition: background 0.12s; box-shadow: 0 2px 9px #0078ad4f;
+    }
+    .reload-btn:hover { background: #ffaa4d; color: #0c1237;}
     .main-ui { flex: 1 1 auto; width: 100vw; max-width: 430px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position:relative; box-sizing:border-box; }
-    /* -- CARDS -- */
     .cards-area {
-      width: 100%; min-height: 173px; max-height: 185px;
+      width: 100%; min-height: 138px; max-height: 165px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      z-index: 10; margin-top: 8px;
     }
     .cards-row {
-      display: flex; justify-content: center; align-items: center; gap: 38px; width: 100%; min-height: 120px; pointer-events: none; z-index: 12;
+      display: flex; justify-content: center; align-items: center;
+      gap: 37px; width: 100%; min-height: 116px; pointer-events: none; z-index: 18;
     }
     .card {
-      width: 74.8px; height: 111.55px; /* 15% increase from ~65x97 */
-      border-radius:16px; background: #fffce7; color: #222; font-size: 2.42em; font-weight: 700; /* make numerals larger */
+      width: 75px; height: 110px; border-radius:16px;
+      background: #ffffff; color: #0b1322; font-size: 2.32em; font-weight: 700;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
-      box-shadow: 0 2px 17px #ffe1ad82, 0 0 0 4px #ffb36e38;
+      box-shadow: 0 2px 17px #08224169, 0 0 0 4px #488adb49;
       opacity: 0; z-index: 22;
-      border: 2.8px solid #ffb36e;
-      background-image: radial-gradient(ellipse at 50% 20%, #fff 76%, #ffe4b6 100%);
-      animation: dealCard 0.43s cubic-bezier(.19,.91,.4,1.12) forwards;
+      border: 2.8px solid #ffaa4d;
+      background-image: radial-gradient(ellipse at 50% 21%, #fff 75%, #cbe7fa 100%);
+      animation: dealCard 0.46s cubic-bezier(.19,.91,.4,1.12) forwards;
       animation-delay: var(--delay,0s);
-      transition: background 0.13s;
+      transition: background 0.14s;
       letter-spacing: .6px;
     }
-    .card > span { font-family:'Segoe UI',Arial,sans-serif; font-weight:700; }
-    .card .suit { font-size:1.12em; margin-top:3.5px; filter:drop-shadow(0 0 3px #fff7); }
-    .card .bright-suit { filter:drop-shadow(0 0 7px #fffdfc); }
-    .card.back { background: repeating-linear-gradient(108deg, #ffaa4d 0 16px,#fff 16px 23px); color: #fff0;}
+    .card > span { font-family:'Segoe UI',Arial,sans-serif; font-weight:700;}
+    .card .suit { font-size:1.16em; margin-top:3px; filter:drop-shadow(0 0 3px #3696f8);}
+    .card .bright-suit { filter:drop-shadow(0 0 11px #fff6);}
+    .card.back { background: repeating-linear-gradient(108deg, #1b468a 0 16px,#fff 16px 23px); color: #fff0;}
     @keyframes dealCard { 0%{ opacity:0;transform:scale(0.68)translateY(13px)rotate(-7deg);}
       72%{opacity:1;transform:scale(1.12)translateY(-4px)rotate(7deg);}
       100%{opacity:1;transform:scale(1)translateY(0)rotate(0deg);}
     }
-    /* ----------- LAYOUT PUSH (move controls down as you drew) ---------- */
     .layout-push { height: 144px; min-height: 144px; width: 100%; pointer-events: none; }
-    @media (max-width:500px) { .layout-push{height:20vw;} }
-    /* ------- BET AREA - shrunk by 20%, centered, extra margin below for further push down. --- */
     .bet-area {
       width: 80vw; max-width: 334px; min-width: 244px;
       margin: 0 auto 14px auto;
@@ -73,91 +85,94 @@
       gap: 10px; z-index: 18; padding: 0 3px;
       position: relative;
     }
-    .bet-box { background: #fffbf6ee; border-radius:15px; border:2.2px solid #ffaa4dbb; color:#412909; font-size:1em; font-weight:bold; text-align:center; min-width:22vw;max-width:92px;padding:9px 7px 7px 7px; display:flex;flex-direction:column;align-items:center;transition: border-color 0.14s; cursor:pointer; z-index:13;}
-    .bet-label { font-size:.97em; margin-bottom:2.3px; color: #ff983d; letter-spacing: .4px; }
-    .bet-amount { font-weight:bold; font-size:1.02em; color:#b4711d; background:#ffe7c7cb; border-radius:8px; padding:1px 7px;}
-    .bet-box.selected { border-color:#ffd369 !important; box-shadow:0 0 6px 1.5px #ffd36998;}
+    .bet-box {
+      background: linear-gradient(140deg,#fdedd2 51%,#b3e0fc 180%);
+      border-radius:17px; border:2.1px solid #1955af;
+      font-weight:bold; text-align:center;
+      min-width:22vw;max-width:98px;padding:9px 7px 7px 7px; display:flex;flex-direction:column;align-items:center;transition: border-color 0.14s; cursor:pointer; z-index:13;
+      box-shadow: 0 1px 9px #1956ae28;
+    }
+    .bet-label, .bet-amount { color: #16171b !important; font-weight: bold; }
+    .bet-label { font-size:.99em; margin-bottom:2.2px; letter-spacing:.3px; }
+    .bet-amount { font-size:1em; background:#ffdebaad; border-radius:8px; padding:1px 7px;}
+    .bet-box.selected { border-color: #ffaa4d !important; box-shadow: 0 0 6px 2.5px #3389f766;}
     .bet-box.blink-hint, .bet-area.pulse-guide .bet-box { animation: betPulse 2.3s infinite;}
-    @keyframes betPulse {0%,100%{border-color:#ffd369;box-shadow:0 0 13px 4px #ffd369b8;}56%{border-color:#ffaa4d;box-shadow:0 0 4px 2px #ffaa4d98;}}
+    @keyframes betPulse {0%,100%{border-color:#ffb951; box-shadow: 0 0 16px 5px #ffaa4d90;}60%{border-color:#1955af; box-shadow:0 0 7px 2px #498bdb96;}}
     .chips-row {
-      width: 80vw; max-width:330px; min-width:208px; margin: 9px auto 9px auto;
+      width: 80vw; max-width:330px; min-width:208px; margin: 10px auto 9px auto;
       display: flex; justify-content: space-between; align-items: center;
-      gap: 11px; z-index:33;
+      gap: 11px; z-index: 33;
     }
-    .chip { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight:bold; font-size:1.14em; color: #fffbe6;border:2px solid #ffe8b8d1;cursor:pointer;box-shadow:0 2px 8px #000b;background:linear-gradient(120deg,#ffb036 31%,#ffaa4d 73%,#ffd261 126%);}
-    .chip.selected { transform:scale(1.13);box-shadow:0 0 0 4px #ffd369c7,0 2px 8px #fa821697; z-index:23;}
-    .chip.chip-50k { background: linear-gradient(135deg,#ffd261 41%,#ffaa4d 90%);}
-    .chip.chip-100k { background: linear-gradient(135deg,#ffe493 60%,#fbab50 115%);}
-    .chip.chip-200k { background: linear-gradient(120deg,#ffd98a 61%,#fdba3e 112%);}
-    .chip.chip-500k { background: linear-gradient(122deg,#ffa443 61%,#ffd861 122%);}
+    .chip {
+      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 1.16em; color: #23231d !important;  /* Black font */
+      border: 2px solid #e3f2fc; cursor: pointer;
+      box-shadow:0 1px 9px #223a65d1;
+      background: linear-gradient(120deg,#ffb951 33%,#2479d7 93%,#ffaa4d 150%);
+      transition: box-shadow 0.12s, background 0.09s;
+      outline:2.2px solid #ffeead4d;
+    }
+    .chip.selected { transform:scale(1.12); box-shadow:0 0 0 5px #ffaa4db9,0 2px 6px #1255af77; z-index:23;}
+    .chip.chip-50k { background: linear-gradient(135deg,#ffb951 68%,#2278d9 100%);}
+    .chip.chip-100k { background: linear-gradient(135deg,#fbab50 57%,#3389f7 140%);}
+    .chip.chip-200k { background: linear-gradient(122deg,#b3e0fc 41%,#ffb951 77%);}
+    .chip.chip-500k { background: linear-gradient(116deg,#1955af 91%,#ffaa4d 170%);}
     .chips-row.pulse-guide .chip {animation:chipPulse 2.3s infinite;}
-    @keyframes chipPulse {0%,100%{box-shadow:0 0 15px 4px #ffd3695a;}48%{box-shadow:0 0 28px 9px #ffd369b2;}}
+    @keyframes chipPulse {0%,100%{box-shadow:0 0 18px 6px #ffb95151;} 48%{box-shadow:0 0 32px 12px #498bdb4e;}}
     .actions-row {
-      width: 80vw; max-width:332px; min-width:200px;
-      margin: 4px auto 2px auto;
-      display: flex; justify-content: space-between; align-items: center; gap: 9px; z-index:66;
+      width: 80vw; max-width:330px; min-width:200px; margin: 4px auto 2px auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 8px; z-index:66;
     }
-    .action-btn,.rebet-btn { background: #ffaa4d; color:#3d3121; border:none; border-radius:9px; padding:10px 12px; font-size:1.02em;font-weight:bold;box-shadow:0 2px 8px #cf983196;margin:0 1.2px;cursor:pointer;transition:background 0.09s, transform 0.10s;}
+    .action-btn,.rebet-btn {
+      background: linear-gradient(120deg,#ffaa4d 77%,#1b468a 150%);
+      color:#1a1d19; border:none; border-radius:9px; padding:9px 14px; font-size:1.02em;font-weight:bold;box-shadow:0 2px 8px #1b468a37;margin:0 1.2px;cursor:pointer;transition:background 0.10s, transform 0.10s;
+    }
     .action-btn:active,.rebet-btn:active{transform:scale(.97);}
-    .action-btn:disabled,.rebet-btn:disabled{background:#8b6b3d56; color:#efdec0; cursor:not-allowed; box-shadow: none;}
-    .rebet-btn:active {background:#ffcc74;color:#7a5917;}
-    #nextHandBtn {background:#ffb857;color:#3c2918;}
-    #nextHandBtn:active {background:#ffd369;}
+    .action-btn:disabled,.rebet-btn:disabled{background:#d8e9fdab; color:#787066; cursor:not-allowed; box-shadow: none;}
+    .rebet-btn:active {background:#1b468a;color:#fff;}
+    #nextHandBtn {background:linear-gradient(90deg,#ffaa4d 72%,#1b468a 150%); color:#243248;}
+    #nextHandBtn:active {background:#498bdb;}
     .actions-row.pulse-guide #dealBtn:not(:disabled) { animation: btnGuidePulse 2.3s infinite;}
-    .actions-row.pulse-guide #playBtn:not(:disabled), .actions-row.pulse-guide #foldBtn:not(:disabled) { animation: btnGuidePulse 2.3s infinite;}
-    @keyframes btnGuidePulse {0%,100%{box-shadow:0 0 0 0 #ffaa4d;}55%{box-shadow:0 0 10px 4px #ffd36998;}}
+    .actions-row.pulse-guide #playBtn:not(:disabled),
+    .actions-row.pulse-guide #foldBtn:not(:disabled) { animation: btnGuidePulse 2.3s infinite;}
+    @keyframes btnGuidePulse {0%,100%{box-shadow:0 0 0 0 #ffaa4d;}55%{box-shadow:0 0 14px 8px #498bdb93;}}
     .result-area {
       width: 100vw; max-width: 440px;
-      text-align: center; font-size: 1.18em; font-weight: bold; letter-spacing:.6px; min-height: 28px;
-      margin: 7px 0 0 0; z-index: 200;
+      text-align: center; font-size: 1.22em; font-weight: bold; letter-spacing:.8px; min-height: 29px; margin: 7px 0 0 0; z-index: 200;
       pointer-events: none; position: relative;
-      color: #fffda7;
-      text-shadow: 0 0 12px #ffd36983, 0 0 3px #ffb05688;
+      color: #ffe3ae; background: rgba(34,43,65,0.85);
+      border-radius: 19px;
+      text-shadow: 0 0 11px #ffd36971, 0 0 2px #498bdb88;
       transition: color 0.23s, font-size 0.15s;
     }
     .result-area.win, .result-area.lose, .result-area.push {
-      color: #fffbe8;
-      font-size: 1.19em;
-      text-shadow:0 0 18px #ffd369ea,0 0 3px #ffb056bb;
+      color: #2db856; background: #fffefc;
+      font-size: 1.27em;
+      text-shadow:0 0 17px #ffd369b5,0 0 1px #498bdbbb;
     }
-    .result-area.win { color: #74ffac; text-shadow:0 0 16px #86fdba,0 0 4px #ffaa4daa;}
-    .result-area.lose { color: #ff9a81;}
-    .result-area.push { color: #ffd369;}
-    /* Pop-up */
+    .result-area.lose {color:#ff3d3d;}
+    .result-area.push {color:#3389f7;}
     .result-popup {
-      position: fixed;
-      left: 50%; top: 49.5%;
-      transform: translate(-50%, -50%);
-      min-width: 60vw;
-      width: 345px;
-      max-width: 99vw;
-      background: rgba(255,255,236,0.99);
-      border: 4.7px solid #ffaa4d;
-      border-radius: 28px;
-      box-shadow: 0 9px 38px #ffbd4198, 0 0 0 8px #ffd36926,0 0 80px #fffbb881 inset;
-      color: #7a4b02;
-      font-size: 1.24em;
-      font-weight: bold;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      z-index: 999;
-      text-align: center;
-      animation: popupFadeIn 0.44s;
-      padding: 27px 24px 14px 24px;
-      letter-spacing: .5px;
+      position: fixed; left: 50%; top: 49.6%; transform: translate(-50%, -50%);
+      min-width: 60vw; width: 342px; max-width: 99vw;
+      background: linear-gradient(150deg,#ffffff 78%,#b0dfff 170%);
+      border: 4.7px solid #3389f7; border-radius: 28px;
+      box-shadow: 0 9px 29px #3987b82b,0 0 0 8px #ffaa4d33,0 0 90px #fcf9ef44 inset; color: #222d2b;
+      font-size: 1.25em; font-weight: bold; display: none;
+      flex-direction: column; align-items: center; z-index: 999;
+      text-align: center; animation: popupFadeIn 0.44s; padding: 27px 23px 14px 23px; letter-spacing: .7px;
     }
     .result-popup.show { display: flex; animation: popupFadeIn 0.44s;}
-    @keyframes popupFadeIn {0% { opacity: 0; transform: translate(-50%, -55%) scale(0.85);} 100% { opacity: 1; transform: translate(-50%, -50%) scale(1);} }
-    .result-popup .heading { font-size: 1.38em; font-weight: 800; margin-bottom: 8px; color: #ffaa4d; text-shadow:0 0 18px #ffd36950;}
-    .result-popup .detail-list { width: 100%; text-align: left; font-size: 1.08em; margin: 10px 0 0 0; padding: 0; list-style: none; color: #7c4b05;}
-    .result-popup .detail-list li { margin-bottom: 2.5px; font-weight: 500;}
+    @keyframes popupFadeIn {0% { opacity: 0; transform: translate(-50%, -57%) scale(0.82);} 100% { opacity: 1; transform: translate(-50%, -50%) scale(1);} }
+    .result-popup .heading { font-size: 1.43em; font-weight: 800; margin-bottom: 8px; color: #1564aa; text-shadow:0 0 18px #ffd36940;}
+    .result-popup .detail-list { width: 100%; text-align: left; font-size: 1.08em; margin: 11px 0 0 0; padding: 0; list-style: none; color: #005c94;}
+    .result-popup .detail-list li { margin-bottom: 2.7px; font-weight: 600;}
     .result-popup .type-win { color: #2db856; font-weight: 700;}
     .result-popup .type-loss { color: #ff3d3d; font-weight: 700;}
     .result-popup .type-push { color: #ffaa4d; font-weight: 700;}
-    .result-popup .type-label { color: #b68815;}
-    .result-popup .close-btn { margin-top: 15px; background: #ffaa4d; color: #412909; font-size: 1.08em; font-weight: bold; border: none; border-radius: 21px; padding: 8px 25px; cursor: pointer; box-shadow: 0 0 8px #ffd36947; transition: background 0.13s;}
-    .result-popup .close-btn:active { background: #ffd369; color: #231910;}
+    .result-popup .type-label { color: #0b2744;}
+    .result-popup .close-btn { margin-top: 15px; background: linear-gradient(90deg,#3389f7 60%,#ffaa4d 155%); color: #fff; font-size: 1.11em; font-weight: bold; border: none; border-radius: 21px; padding: 8px 27px; cursor: pointer; box-shadow: 0 0 8px #ffd36947; transition: background 0.13s;}
+    .result-popup .close-btn:active { background: #ffaa4d; color: #1052a7;}
     .confetti {
       position: fixed; pointer-events:none; z-index: 1200; left:0; top:0; width:100vw; height:100vh;
       animation: confettiFade 1.4s linear forwards;
@@ -185,7 +200,6 @@
         <div class="cards-row dealer" id="dealerCards"></div>
         <div class="cards-row player" id="playerCards"></div>
       </div>
-      <!-- moves controls down: adjust this height for more/fewer px -->
       <div class="layout-push"></div>
       <div class="bet-area" id="betRowContainer">
         <div class="bet-box" id="anteBox"><div class="bet-label">Ante</div><div class="bet-amount" id="anteAmount">$0</div></div>
@@ -216,10 +230,9 @@
     </div>
   </div>
   <script>
-    // Pulse guide and game UI logic
+    // Pulse guide and UI as previous versions
     const SUITS = ['♠','♥','♦','♣'], RANKS = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'], RANK_VALUES = {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'J':11,'Q':12,'K':13,'A':14};
     let balance=5000000, bets={ante:0,pair:0,bonus:0}, prevBets={ante:0,pair:0,bonus:0}, selectedChip=0, gameState='betting', playerHand=[], dealerHand=[], sixCardHand=[], pendingPayout=0, pendingBreakdown={ante:0,pair:0,bonus:0};
-
     function updateGuide() {
       ['chipsRow','betRowContainer','actionsRow'].forEach(id => document.getElementById(id).classList.remove('pulse-guide'));
       if (gameState === 'betting') {
@@ -236,7 +249,7 @@
     function updateBalance(animate=false,inc=0){const el=document.getElementById('balance');if(inc>0){let s=balance-inc,st=13,cu=0,stp=Math.ceil(inc/st);let intv=setInterval(()=>{cu+=stp;if(cu>=inc)cu=inc;el.textContent='$'+(s+cu).toLocaleString();if(cu>=inc){clearInterval(intv);el.textContent='$'+balance.toLocaleString();}},23);}else el.textContent='$'+balance.toLocaleString();if(animate){el.classList.add('animate');setTimeout(()=>el.classList.remove('animate'),800);}}
     function updateBets(){document.getElementById('anteAmount').textContent='$'+bets.ante.toLocaleString();document.getElementById('pairAmount').textContent='$'+bets.pair.toLocaleString();document.getElementById('bonusAmount').textContent='$'+bets.bonus.toLocaleString();document.getElementById('rebetBtn').disabled=!(prevBets.ante||prevBets.pair||prevBets.bonus)||(bets.ante||bets.pair||bets.bonus);setTimeout(updateGuide,50);}
     function selectChip(amount){selectedChip=amount;document.querySelectorAll('.chip').forEach(chip=>{chip.classList.toggle('selected',parseInt(chip.textContent.replace(/\$|K/g,'')+'000',10)===amount);});updateGuide();}
-    function clearBets() {if(gameState!=='betting')return;bets={ante:0,pair:0,bonus:0};updateBets();resultArea('');updateGuide();}
+    function clearBets() {if(gameState!=='betting')return;bets={ante:0,pair:0,bonus:0};updateBets();resultArea('','');updateGuide();}
     function reloadBalance() {balance=5000000;updateBalance(true);clearBets();resultArea('Balance reloaded!','info');updateGuide();}
     function resultArea(text,type=''){let el=document.getElementById('resultArea');el.textContent=text;el.className='result-area'+(type?' '+type:'');}
     function renderCards(hand,elemId,reveal=true){
@@ -246,8 +259,9 @@
         cardDiv.className='card';cardDiv.style.setProperty('--delay',(i*0.13)+'s');
         if(!reveal) cardDiv.classList.add('back');
         else if(card.rank) {
-          let suitColor = (card.suit==='♥'||card.suit==='♦')?'#ff5a5a':'#222c47';
-          let bright = (card.suit==='♥'||card.suit==='♦')?'bright-suit':'';
+          let suitColor = (card.suit==='♥'||card.suit==='♦')?'#ff3d59':'#1956ae';
+          let bright = '';
+          if(card.suit==='♥'||card.suit==='♦') bright = 'bright-suit';
           cardDiv.innerHTML=`<span>${card.rank}</span><span class="suit ${bright}" style="color:${suitColor}">${card.suit}</span>`;
         }
         el.appendChild(cardDiv);
@@ -292,7 +306,7 @@
         if(breakdown.ante)lines.push(`<li><span class="type-label">Ante&nbsp;</span>: <span class="type-win">+$${breakdown.ante.toLocaleString()}</span></li>`);
         if(breakdown.pair)lines.push(`<li><span class="type-label">Pair+&nbsp;</span>: <span class="type-win">+$${breakdown.pair.toLocaleString()}</span></li>`);
         if(breakdown.bonus)lines.push(`<li><span class="type-label">Bonus&nbsp;</span>: <span class="type-win">+$${breakdown.bonus.toLocaleString()}</span></li>`);
-        if(breakdown.total)lines.push(`<li style="margin-top:7px;font-size:1.14em;"><span class="type-label">Total</span>: <b class="type-win">+$${breakdown.total.toLocaleString()}</b></li>`);
+        if(breakdown.total)lines.push(`<li style="margin-top:7px;font-size:1.17em;"><span class="type-label">Total</span>: <b class="type-win">+$${breakdown.total.toLocaleString()}</b></li>`);
       }else if(type==='push'){
         heading.textContent="PUSH";
         if(breakdown.ante)lines.push(`<li><span class="type-label">Ante</span>: <span class="type-push">$${breakdown.ante.toLocaleString()}</span> returned</li>`);
@@ -302,7 +316,7 @@
         if(breakdown.ante)lines.push(`<li><span class="type-label">Ante</span>: <span class="type-loss">-$${Math.abs(breakdown.ante).toLocaleString()}</span></li>`);
         if(breakdown.pair)lines.push(`<li><span class="type-label">Pair+</span>: <span class="type-loss">-$${Math.abs(breakdown.pair).toLocaleString()}</span></li>`);
         if(breakdown.bonus)lines.push(`<li><span class="type-label">Bonus</span>: <span class="type-loss">-$${Math.abs(breakdown.bonus).toLocaleString()}</span></li>`);
-        if(breakdown.total)lines.push(`<li style="margin-top:7px;font-size:1.14em;"><span class="type-label">Total</span>: <b class="type-loss">-$${Math.abs(breakdown.total).toLocaleString()}</b></li>`);
+        if(breakdown.total)lines.push(`<li style="margin-top:7px;font-size:1.17em;"><span class="type-label">Total</span>: <b class="type-loss">-$${Math.abs(breakdown.total).toLocaleString()}</b></li>`);
       }
       detail.innerHTML=lines.join(""); pop.classList.add("show");
       setTimeout(()=>{if(pop.classList.contains("show"))pop.style.animation="none";},500);
@@ -312,17 +326,17 @@
     function confetti() {
       let div = document.createElement('div');
       div.className = "confetti";
-      let colors = ["#fdba3e","#ffaa4d","#fffebd","#ffb36e","#74ffac","#ff7e5a","#ffebbf"];
+      let colors = ["#fdba3e","#ffaa4d","#fffebd","#3389f7","#498bdb","#74ffac","#b3e0fc"];
       let html = "";
-      for (let i=0; i<56; ++i) {
-        let size = Math.random()*14+8, rot = Math.random()*360, x = Math.random()*96, y = Math.random()*21+2, dur = 0.8 + Math.random()*0.8;
+      for (let i=0; i<46; ++i) {
+        let size = Math.random()*13+8, rot = Math.random()*360, x = Math.random()*98, y = Math.random()*24+2, dur = 0.7 + Math.random()*0.6;
         let color = colors[i%colors.length];
         let top = y+"vh", left = x+"vw";
-        html += `<div style="position:absolute;top:${top};left:${left};width:${size}px;height:${size/2.1}px;background:${color};border-radius:60%;transform:rotate(${rot}deg);opacity:0.86;box-shadow:0 0 4px #fff6;animation:popupDrop ${dur}s cubic-bezier(.51,1,.42,1.14);"></div>`;
+        html += `<div style="position:absolute;top:${top};left:${left};width:${size}px;height:${size/2}px;background:${color};border-radius:70%;transform:rotate(${rot}deg);opacity:0.83;box-shadow:0 0 4px #fff6;animation:popupDrop ${dur}s cubic-bezier(.51,1,.42,1.14);"></div>`;
       }
       div.innerHTML = html;
       document.getElementById('confettiHolder').appendChild(div);
-      setTimeout(()=>div.remove(), 1280);
+      setTimeout(()=>div.remove(), 1180);
     }
     function pulseBetBox(id){let e=document.getElementById(id);e.classList.add('blink-hint');setTimeout(()=>e.classList.remove('blink-hint'),800);}
     function endHand(waitForNextHand){enableActions(false);if(!waitForNextHand)setTimeout(()=>resetGame(),800);}
